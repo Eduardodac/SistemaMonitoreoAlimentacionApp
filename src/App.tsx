@@ -1,11 +1,13 @@
+import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
+import "primereact/resources/primereact.min.css";                  //core css
+import "primeicons/primeicons.css";                                //icons
+import { Router } from "./router/Router";
+
+
 function App() {
 
   return (
-    <div className="min-h-screen flex justify-center ">
-      <h1 className="text-3xl font-bold text-blue-600">
-      Install & Setup Vite + React + Typescript + Tailwind CSS 3
-      </h1>
-    </div>
+    <Router></Router>
   );
 }
 
