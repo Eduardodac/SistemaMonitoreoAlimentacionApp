@@ -4,12 +4,12 @@ import { LeftMenu } from "../shared/LeftMenu"
 
 export const AppNavigatorBar = () => {
   return (
-    <div className="flex w-full h-full">
+    <div className="flex w-full h-full bg-fondo">
       <LeftMenu/>
 
       <div className="flex flex-col w-full">
         <TopMenu></TopMenu>
-        <div className=" h-full px-15">
+        <div className=" w-full h-full p-10 m-auto bg-fondo">
           <Outlet></Outlet>
         </div>
       </div>

@@ -1,18 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-#root {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+*{
+  font-family: 'Inter';
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+::-webkit-scrollbar {
+  display: none;
 }
+
+.active {
+  @apply font-semibold;
+  @apply text-paletaIpn-guinda 
+}
+
+*, ::before, ::after {
+  border-style: solid;
+  border-color: #6C1D45;
+}
+

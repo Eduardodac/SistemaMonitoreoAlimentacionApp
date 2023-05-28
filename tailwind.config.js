@@ -15,9 +15,19 @@ module.exports = {
     },
     extend: {
       colors: {
-        gray:{
-          menus : "#f6f9fc"
-        }
+        gray: {
+          menus: "#F0F0C9"
+          // menus: "#F0F0C9",
+          // menus: '#F2F2F2',
+        },
+        paletaIpn: {
+          guinda: "#6C1D45",
+          rojo: "#8C1858",
+          morado: "#8C657B",
+          rosa: "#F2DCEB",
+          blanco: "#F2F2F2"
+        },
+        fondo:"#FBFEF9"
       },
       spacing: {
         screen: "100vw",

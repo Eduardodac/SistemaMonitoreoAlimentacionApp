@@ -1,4 +1,9 @@
-import catIcon from "../assets/catIcon.jpg"
+import catIcon from "../assets/catIcon.png"
+import chart from "../assets/chart.png"
+import user from "../assets/user.png"
+import calendar from "../assets/calendar.png"
+import clock from "../assets/clock.png"
+import bell from "../assets/bell.png"
 import {MenuItemTemplate} from "./MenuItemTemplate";
 
 export const leftMenuItems = [
@@ -42,32 +47,32 @@ export const leftMenuItems = [
 export const leftMenuItemsTemplate = [
     {
         template : () => (
-            <MenuItemTemplate label = 'Dashboard' icon ="pi pi-fw pi-chart-pie" path = "dashboard"/>
+            <MenuItemTemplate label = 'Dashboard' icon ="" img= {chart} path = "dashboard"/>
         )
     },
     {
         template : () => (
-            <MenuItemTemplate label = 'Cuenta' icon ="pi pi-fw pi-user" path = "perfil"/>
+            <MenuItemTemplate label = 'Cuenta' icon ="" img= {user} path = "perfil"/>
         )
     },
     {
         template : () => (
-            <MenuItemTemplate label = 'Mascotas' icon ="pi pi-chart-pie" path = "mascotas"/>
+            <MenuItemTemplate label = 'Mascotas' icon ="" img= {catIcon}  path = "mascotas"/>
         )
     },
     {
         template : () => (
-            <MenuItemTemplate label = 'Calendarización' icon ="pi pi-fw pi-calendar-times" path = "calendario"/>
+            <MenuItemTemplate label = 'Calendarización' icon ="" img= {calendar} path = "calendario"/>
         )
     },
     {
         template : () => (
-            <MenuItemTemplate label = 'Horarios' icon ="pi pi-fw pi-clock" path = "horarios"/>
+            <MenuItemTemplate label = 'Horarios' icon ="" img= {clock} path = "horarios"/>
         )
     },
     {
         template : () => (
-            <MenuItemTemplate label = 'Avisos' icon ="pi pi-fw pi-bell" path = "avisos"/>
+            <MenuItemTemplate label = 'Avisos' icon ="" img = {bell} path = "avisos"/>
         )
     },
     {

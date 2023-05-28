@@ -15,17 +15,16 @@ export const MenuItemTemplate = ({
 }: ItemProps) => {
     return (
 
-        <div className='flex tw-mx-4 tw-my-2 '>
+        <div className='flex mx-2 my-2 '>
             <NavLink
                 className={({ isActive }) => {
-                    return `w-full  tw-rounded-lg ${isActive ? 'active' : 'hover:tw-bg-grayl'} `
+                    return `w-full  rounded-lg ${isActive ? 'active' : 'hover:bg-grayl'} `
                 }}
                 to={`/${path}`}
             >
-
-                <div className='flex tw-items-center gap-2 tw-text-sm tw-py-2 tw-pl-3'>
+                <div className='flex items-center gap-2 text-sm py-2 pl-3'>
                     {img != null
-                        ? (<img src={img} alt={path} className='tw-h-5 tw-w-5 tw-opacity-60' />)
+                        ? (<img src={img} alt={path} className='h-5 w-5 opacity-60' />)
                         : (<i className={`${icon}`}></i>)}
                     <p>{label}</p>
                 </div>
