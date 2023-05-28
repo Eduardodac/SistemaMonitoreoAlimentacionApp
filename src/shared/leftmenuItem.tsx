@@ -8,44 +8,6 @@ import {MenuItemTemplate} from "./MenuItemTemplate";
 
 export const leftMenuItems = [
     {
-        label: 'Dashboard',
-        icon: 'pi pi-fw pi-chart-pie',
-        url: "/dashboard",
-        items : {
-            label:"algo"
-        }
-    },
-    {
-        label: 'Cuenta',
-        icon: 'pi pi-fw pi-user',
-    },
-    {
-        label: 'Mascotas',
-        icon: catIcon
-    },
-    {
-        label: 'Calendarización',
-        icon: 'pi pi-fw pi-calendar-times',
-    },
-    {
-        label: 'Horarios',
-        icon: 'pi pi-fw pi-clock',
-    },
-    {
-        label: 'Avisos',
-        icon: 'pi pi-fw pi-bell',
-    },
-    {
-        separator: true
-    },
-    {
-        label: 'Cerrar sesión',
-        icon: 'pi pi-fw pi-power-off'
-    }
-];
-
-export const leftMenuItemsTemplate = [
-    {
         template : () => (
             <MenuItemTemplate label = 'Dashboard' icon ="" img= {chart} path = "dashboard"/>
         )
@@ -57,7 +19,7 @@ export const leftMenuItemsTemplate = [
     },
     {
         template : () => (
-            <MenuItemTemplate label = 'Mascotas' icon ="" img= {catIcon}  path = "mascotas"/>
+            <MenuItemTemplate label = 'Gatos' icon ="" img= {catIcon}  path = "gatos"/>
         )
     },
     {

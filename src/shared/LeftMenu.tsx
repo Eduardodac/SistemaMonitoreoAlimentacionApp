@@ -1,5 +1,5 @@
 import { SlideMenu } from 'primereact/slidemenu';
-import { leftMenuItemsTemplate } from './leftmenuItem';
+import { leftMenuItems } from './leftmenuItem';
 import { Image } from 'primereact/image';
 import logo from "../assets/CatSVG.svg"
 
@@ -13,7 +13,7 @@ export const LeftMenu = () => {
             </div>
             
             <div className=" h-full">
-                <SlideMenu model={leftMenuItemsTemplate} className='bg-gray-menus w-44 border-0 rounded-none ' viewportHeight={585} easing="ease-in" menuWidth={200}></SlideMenu>
+                <SlideMenu model={leftMenuItems} className='bg-gray-menus w-44 border-0 rounded-none ' viewportHeight={585} easing="ease-in" menuWidth={200}></SlideMenu>
             </div>
         </div>
     )

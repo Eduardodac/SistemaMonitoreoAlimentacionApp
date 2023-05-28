@@ -4,9 +4,9 @@ import { HomePage } from "../pages/HomePage"
 import { Dashboard } from "../pages/dashboard/Dashboard"
 import { Perfil } from "../pages/cuenta/Perfil"
 import { EditarPerfil } from "../pages/cuenta/EditarPerfil"
-import { Mascotas } from "../pages/mascotas/Mascotas"
-import { EditarMascotas } from "../pages/mascotas/EditarMascotas"
-import { PerfilMascotas } from "../pages/mascotas/PerfilMascotas"
+import { Gatos } from "../pages/gatos/Gatos"
+import { EditarGatos } from "../pages/gatos/EditarGatos"
+import { PerfilGatos } from "../pages/gatos/PerfilGatos"
 import { Calendario } from "../pages/calendario/Calendario"
 import { EditarCalendario } from "../pages/calendario/EditarCalendario"
 import { Horarios } from "../pages/horarios/Horarios"
@@ -24,9 +24,9 @@ export const Router = () => {
                     <Route path = "dashboard" element={<Dashboard/>}/>
                     <Route path = "perfil" element={<Perfil/>}/>
                     <Route path = "perfil/editar" element={<EditarPerfil/>}/>
-                    <Route path = "mascotas" element={<Mascotas/>}/>
-                    <Route path = "mascotas/perfil" element={<PerfilMascotas/>}/>
-                    <Route path = "mascotas/editar" element={<EditarMascotas/>}/>
+                    <Route path = "gatos" element={<Gatos/>}/>
+                    <Route path = "gatos/perfil" element={<EditarGatos/>}/>
+                    <Route path = "gatos/editar" element={<PerfilGatos/>}/>
                     <Route path = "calendario" element={<Calendario/>}/>
                     <Route path = "calendario/editar" element={<EditarCalendario/>}/>
                     <Route path = "horarios" element={<Horarios/>}/>
