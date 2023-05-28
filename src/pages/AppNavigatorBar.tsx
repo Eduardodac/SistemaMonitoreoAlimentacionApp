@@ -7,9 +7,9 @@ export const AppNavigatorBar = () => {
     <div className="flex w-full h-full">
       <LeftMenu/>
 
-      <div className="flex flex-col w-5/6">
+      <div className="flex flex-col w-full">
         <TopMenu></TopMenu>
-        <div className=" h-full">
+        <div className=" h-full px-15">
           <Outlet></Outlet>
         </div>
       </div>
