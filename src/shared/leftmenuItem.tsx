@@ -4,37 +4,38 @@ import user from "../assets/user.png"
 import calendar from "../assets/calendar.png"
 import clock from "../assets/clock.png"
 import bell from "../assets/bell.png"
+import off from "../assets/off.png"
 import {MenuItemTemplate} from "./MenuItemTemplate";
 
 export const leftMenuItems = [
     {
         template : () => (
-            <MenuItemTemplate label = 'Dashboard' icon ="" img= {chart} path = "dashboard"/>
+            <MenuItemTemplate label = 'Dashboard' img= {chart} path = "dashboard"/>
         )
     },
     {
         template : () => (
-            <MenuItemTemplate label = 'Cuenta' icon ="" img= {user} path = "perfil"/>
+            <MenuItemTemplate label = 'Cuenta' img= {user} path = "perfil"/>
         )
     },
     {
         template : () => (
-            <MenuItemTemplate label = 'Gatos' icon ="" img= {catIcon}  path = "gatos"/>
+            <MenuItemTemplate label = 'Gatos' img= {catIcon}  path = "gatos"/>
         )
     },
     {
         template : () => (
-            <MenuItemTemplate label = 'Calendarización' icon ="" img= {calendar} path = "calendario"/>
+            <MenuItemTemplate label = 'Calendarización' img= {calendar} path = "calendario"/>
         )
     },
     {
         template : () => (
-            <MenuItemTemplate label = 'Horarios' icon ="" img= {clock} path = "horarios"/>
+            <MenuItemTemplate label = 'Horarios' img= {clock} path = "horarios"/>
         )
     },
     {
         template : () => (
-            <MenuItemTemplate label = 'Avisos' icon ="" img = {bell} path = "avisos"/>
+            <MenuItemTemplate label = 'Avisos' img = {bell} path = "avisos"/>
         )
     },
     {
@@ -43,7 +44,7 @@ export const leftMenuItems = [
     ,
     {
         template : () => (
-            <MenuItemTemplate label = 'Cerrar Sesión' icon ="pi pi-fw pi-power-off" path = ""/>
+            <MenuItemTemplate label = 'Cerrar Sesión' img = {off} path = ""/>
         )
     },
 ];
