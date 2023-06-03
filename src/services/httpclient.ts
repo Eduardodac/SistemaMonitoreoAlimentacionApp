@@ -10,7 +10,7 @@ const openapiConfig = new Configuration();
 //         Authorization: 'Bearer ' + tokenValue,
 //      },
 // };
-openapiConfig.basePath = "http://20.75.148.109"
+openapiConfig.basePath = "https://localhost:7090"
 
 
 export const usuariosApi = new UsuariosApi(openapiConfig);
