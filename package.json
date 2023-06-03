@@ -7,9 +7,12 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "openApiDelete": "rm -rf src/openapi",
+    "openApi": "npx @openapitools/openapi-generator-cli generate -i ./openapi.yaml -o src/openAPI -g typescript-axios --additional-properties=supportsES6=true"
   },
   "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.6.0",
     "primeicons": "^6.0.1",
     "primereact": "^9.5.0",
     "react": "^18.2.0",
