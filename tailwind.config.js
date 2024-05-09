@@ -27,7 +27,8 @@ module.exports = {
           rosa: "#F2DCEB",
           blanco: "#F2F2F2"
         },
-        fondo:"#FBFEF9"
+        fondo:"#FBFEF9",
+        darkFondo: "#f0f0c959"
       },
       spacing: {
         screen: "100vw",

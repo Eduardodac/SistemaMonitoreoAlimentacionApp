@@ -7,12 +7,14 @@ export const AppNavigatorBar = () => {
     <div className="flex w-full h-full bg-fondo">
       <LeftMenu/>
 
-      <div className="flex flex-col w-full">
+      <section className="flex flex-col w-full">
         <TopMenu></TopMenu>
-        <div className=" w-full h-full p-10 m-auto bg-fondo">
-          <Outlet></Outlet>
-        </div>
-      </div>
+        <article className="w-full h-full px-3 pt-3 m-auto bg-darkFondo">
+            <div className="w-full h-full p-5 m-auto bg-fondo">
+                <Outlet></Outlet>
+            </div>
+        </article>
+      </section>
 
 
     </div>

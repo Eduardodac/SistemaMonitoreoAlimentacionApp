@@ -7,8 +7,6 @@ import { EditarPerfil } from "../pages/cuenta/EditarPerfil"
 import { Gatos } from "../pages/gatos/Gatos"
 import { EditarGatos } from "../pages/gatos/EditarGatos"
 import { PerfilGatos } from "../pages/gatos/PerfilGatos"
-import { Calendario } from "../pages/calendario/Calendario"
-import { EditarCalendario } from "../pages/calendario/EditarCalendario"
 import { Horarios } from "../pages/horarios/Horarios"
 import { EditarHorario } from "../pages/horarios/EditarHorario"
 import { Avisos } from "../pages/avisos/Avisos"
@@ -27,8 +25,6 @@ export const Router = () => {
                     <Route path = "gatos" element={<Gatos/>}/>
                     <Route path = "gatos/perfil" element={<EditarGatos/>}/>
                     <Route path = "gatos/editar" element={<PerfilGatos/>}/>
-                    <Route path = "calendario" element={<Calendario/>}/>
-                    <Route path = "calendario/editar" element={<EditarCalendario/>}/>
                     <Route path = "horarios" element={<Horarios/>}/>
                     <Route path = "horarios/editar" element={<EditarHorario/>}/>
                     <Route path = "avisos" element={<Avisos/>}/>

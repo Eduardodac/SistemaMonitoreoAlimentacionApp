@@ -13,7 +13,7 @@ export const LeftMenu = () => {
             </div>
             
             <div className=" h-full">
-                <SlideMenu model={leftMenuItems} className='bg-gray-menus w-44 border-0 rounded-none ' viewportHeight={585} easing="ease-in" menuWidth={200}></SlideMenu>
+                <SlideMenu model={leftMenuItems} className='bg-gray-menus w-44 border-0 rounded-none' viewportHeight={585} easing="ease-in" menuWidth={200}></SlideMenu>
             </div>
         </div>
     )
