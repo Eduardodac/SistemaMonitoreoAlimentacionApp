@@ -11,12 +11,20 @@ import { Horarios } from "../pages/horarios/Horarios"
 import { EditarHorario } from "../pages/horarios/EditarHorario"
 import { Avisos } from "../pages/avisos/Avisos"
 import { Configuracion } from "../pages/avisos/Configuracion"
+import { UserConteiner } from "../pages/user/UserConteiner"
+import { Login } from "../pages/user/Login"
+import { Register } from "../pages/user/Register"
 
 
 export const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
+                <Route path="/usuario" element = {<UserConteiner></UserConteiner>}>
+                    <Route path = "login" element={<Login/>}/>
+                    <Route path = "registrar" element={<Register/>}/>
+                    <Route index element={<Navigate to = "/usuario/login" replace/>}/>
+                </Route>
                 <Route path="/" element = {<AppNavigatorBar></AppNavigatorBar>}>
                     <Route path = "home" element={<HomePage/>}/>
                     <Route path = "dashboard" element={<Dashboard/>}/>
