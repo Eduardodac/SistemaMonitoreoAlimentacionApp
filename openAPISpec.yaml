@@ -1,0 +1,1274 @@
+---
+openapi: 3.0.1
+info:
+  title: SistemaMonitoreoAlimentacionApi
+  version: v1
+paths:
+  "/api/ActividadFelina/{gatoId}":
+    get:
+      tags:
+      - ActividadFelina
+      parameters:
+      - name: gatoId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/ActividadFelina"
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/ActividadFelina"
+            text/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/ActividadFelina"
+  "/api/ActividadFelina":
+    post:
+      tags:
+      - ActividadFelina
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/NuevaActividadFelinaDto"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/NuevaActividadFelinaDto"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/NuevaActividadFelinaDto"
+      responses:
+        '200':
+          description: Success
+  "/api/Avisos":
+    get:
+      tags:
+      - Avisos
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                "$ref": "#/components/schemas/Aviso"
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Aviso"
+            text/json:
+              schema:
+                "$ref": "#/components/schemas/Aviso"
+    post:
+      tags:
+      - Avisos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/NuevoAvisoDto"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/NuevoAvisoDto"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/NuevoAvisoDto"
+      responses:
+        '200':
+          description: Success
+  "/api/Avisos/{avisoId}":
+    put:
+      tags:
+      - Avisos
+      parameters:
+      - name: avisoId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ModificarAvisoDto"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/ModificarAvisoDto"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/ModificarAvisoDto"
+      responses:
+        '200':
+          description: Success
+  "/api/Collares":
+    get:
+      tags:
+      - Collares
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Collar"
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Collar"
+            text/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Collar"
+    post:
+      tags:
+      - Collares
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/CollarCreacionDto"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/CollarCreacionDto"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/CollarCreacionDto"
+      responses:
+        '200':
+          description: Success
+  "/api/Collares/{collarId}":
+    get:
+      tags:
+      - Collares
+      parameters:
+      - name: collarId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                "$ref": "#/components/schemas/Collar"
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Collar"
+            text/json:
+              schema:
+                "$ref": "#/components/schemas/Collar"
+  "/api/Cuentas/registrar":
+    post:
+      tags:
+      - Cuentas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/NuevoUsuario"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/NuevoUsuario"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/NuevoUsuario"
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                "$ref": "#/components/schemas/RespuestaAutenticacion"
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/RespuestaAutenticacion"
+            text/json:
+              schema:
+                "$ref": "#/components/schemas/RespuestaAutenticacion"
+  "/api/Cuentas/login":
+    post:
+      tags:
+      - Cuentas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/CredencialesUsuario"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/CredencialesUsuario"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/CredencialesUsuario"
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                "$ref": "#/components/schemas/RespuestaAutenticacion"
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/RespuestaAutenticacion"
+            text/json:
+              schema:
+                "$ref": "#/components/schemas/RespuestaAutenticacion"
+  "/api/Cuentas/RenovarToken":
+    get:
+      tags:
+      - Cuentas
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                "$ref": "#/components/schemas/RespuestaAutenticacion"
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/RespuestaAutenticacion"
+            text/json:
+              schema:
+                "$ref": "#/components/schemas/RespuestaAutenticacion"
+  "/api/Cuentas/cambiarPassword":
+    put:
+      tags:
+      - Cuentas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/PasswordChange"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/PasswordChange"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/PasswordChange"
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                "$ref": "#/components/schemas/RespuestaAutenticacion"
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/RespuestaAutenticacion"
+            text/json:
+              schema:
+                "$ref": "#/components/schemas/RespuestaAutenticacion"
+  "/api/Cuentas/usuario":
+    get:
+      tags:
+      - Cuentas
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                "$ref": "#/components/schemas/ModificarUsuario"
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ModificarUsuario"
+            text/json:
+              schema:
+                "$ref": "#/components/schemas/ModificarUsuario"
+  "/api/Cuentas/modificarUsuario":
+    put:
+      tags:
+      - Cuentas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ModificarUsuario"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/ModificarUsuario"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/ModificarUsuario"
+      responses:
+        '200':
+          description: Success
+  "/api/DiasdelaSemana":
+    get:
+      tags:
+      - DiasdelaSemana
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/DiadelaSemana"
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/DiadelaSemana"
+            text/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/DiadelaSemana"
+    post:
+      tags:
+      - DiasdelaSemana
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/DiadelaSemana"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/DiadelaSemana"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/DiadelaSemana"
+      responses:
+        '200':
+          description: Success
+  "/api/Dosificadores":
+    get:
+      tags:
+      - Dosificadores
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Dosificador"
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Dosificador"
+            text/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Dosificador"
+    post:
+      tags:
+      - Dosificadores
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/DosificadorCreacionDto"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/DosificadorCreacionDto"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/DosificadorCreacionDto"
+      responses:
+        '200':
+          description: Success
+  "/api/Dosificadores/{dosificadorId}":
+    get:
+      tags:
+      - Dosificadores
+      parameters:
+      - name: dosificadorId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                "$ref": "#/components/schemas/Dosificador"
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Dosificador"
+            text/json:
+              schema:
+                "$ref": "#/components/schemas/Dosificador"
+  "/api/Dosificadores/disponibilidad/{dosificadorId}":
+    put:
+      tags:
+      - Dosificadores
+      parameters:
+      - name: dosificadorId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/DisponibilidadAvisoDto"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/DisponibilidadAvisoDto"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/DisponibilidadAvisoDto"
+      responses:
+        '200':
+          description: Success
+  "/api/Gatos":
+    get:
+      tags:
+      - Gatos
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/GatoEntidadDto"
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/GatoEntidadDto"
+            text/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/GatoEntidadDto"
+  "/api/Gatos/{gatoId}":
+    get:
+      tags:
+      - Gatos
+      parameters:
+      - name: gatoId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                "$ref": "#/components/schemas/Gato"
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Gato"
+            text/json:
+              schema:
+                "$ref": "#/components/schemas/Gato"
+    post:
+      tags:
+      - Gatos
+      parameters:
+      - name: gatoId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/GatoEntidadDto"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/GatoEntidadDto"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/GatoEntidadDto"
+      responses:
+        '200':
+          description: Success
+    put:
+      tags:
+      - Gatos
+      parameters:
+      - name: gatoId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ModificarGatoDto"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/ModificarGatoDto"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/ModificarGatoDto"
+      responses:
+        '200':
+          description: Success
+  "/api/Gatos/activarCollar/{gatoId}":
+    put:
+      tags:
+      - Gatos
+      parameters:
+      - name: gatoId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ModificarCollarDto"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/ModificarCollarDto"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/ModificarCollarDto"
+      responses:
+        '200':
+          description: Success
+  "/api/Gatos/desactivarCollar/{gatoId}":
+    put:
+      tags:
+      - Gatos
+      parameters:
+      - name: gatoId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ModificarCollarDto"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/ModificarCollarDto"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/ModificarCollarDto"
+      responses:
+        '200':
+          description: Success
+  "/api/Horarios":
+    get:
+      tags:
+      - Horarios
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/HorarioEntidadDto"
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/HorarioEntidadDto"
+            text/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/HorarioEntidadDto"
+    post:
+      tags:
+      - Horarios
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/HorarioEntidadDto"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/HorarioEntidadDto"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/HorarioEntidadDto"
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Horario"
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Horario"
+            text/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Horario"
+  "/api/Horarios/{horarioId}":
+    put:
+      tags:
+      - Horarios
+      parameters:
+      - name: horarioId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/HorarioModificarDto"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/HorarioModificarDto"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/HorarioModificarDto"
+      responses:
+        '200':
+          description: Success
+  "/api/Registros/{collarId}":
+    get:
+      tags:
+      - Registros
+      parameters:
+      - name: collarId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Registro"
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Registro"
+            text/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Registro"
+  "/api/Registros":
+    post:
+      tags:
+      - Registros
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/NuevoRegistroDto"
+          text/json:
+            schema:
+              "$ref": "#/components/schemas/NuevoRegistroDto"
+          application/*+json:
+            schema:
+              "$ref": "#/components/schemas/NuevoRegistroDto"
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    ActividadFelina:
+      required:
+      - fechaFin
+      - fechaInicio
+      - gatoId
+      type: object
+      properties:
+        actividadFelinaId:
+          type: string
+          format: uuid
+        gatoId:
+          type: string
+          format: uuid
+        fechaInicio:
+          type: string
+          format: date-time
+        fechaFin:
+          type: string
+          format: date-time
+        aproximaciones:
+          type: integer
+          format: int32
+        alimentoConsumido:
+          type: number
+          format: double
+        aproximacionesSinConsumo:
+          type: integer
+          format: int32
+        gato:
+          "$ref": "#/components/schemas/Gato"
+      additionalProperties: false
+    Aviso:
+      required:
+      - caducidad
+      - limpiarContenedor
+      - limpiarPlato
+      type: object
+      properties:
+        avisoId:
+          type: string
+          format: uuid
+        usuarioId:
+          type: string
+          format: uuid
+        limpiarContenedor:
+          type: string
+          format: date-time
+        limpiarPlato:
+          type: string
+          format: date-time
+        caducidad:
+          type: string
+          format: date-time
+        alimentoDisponible:
+          type: integer
+          format: int32
+        usuario:
+          "$ref": "#/components/schemas/Usuario"
+      additionalProperties: false
+    Collar:
+      required:
+      - estatusActivacion
+      - fechaSalida
+      - numeroRegistro
+      type: object
+      properties:
+        collarId:
+          type: string
+          format: uuid
+        fechaSalida:
+          type: string
+          format: date-time
+        fechaActivacion:
+          type: string
+          format: date-time
+          nullable: true
+        numeroRegistro:
+          type: string
+        estatusActivacion:
+          type: boolean
+        gato:
+          "$ref": "#/components/schemas/Gato"
+      additionalProperties: false
+    CollarCreacionDto:
+      type: object
+      properties:
+        collarId:
+          type: string
+          format: uuid
+        fechaSalida:
+          type: string
+          format: date-time
+          nullable: true
+        numeroRegistro:
+          type: string
+          nullable: true
+        estatusActivacion:
+          type: boolean
+      additionalProperties: false
+    CredencialesUsuario:
+      required:
+      - password
+      - username
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      additionalProperties: false
+    DiadelaSemana:
+      required:
+      - dia
+      type: object
+      properties:
+        diadelaSemanaId:
+          type: integer
+          format: int32
+        dia:
+          type: string
+      additionalProperties: false
+    DisponibilidadAvisoDto:
+      type: object
+      properties:
+        alimentoDisponible:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Dosificador:
+      required:
+      - estatusActivacion
+      - numeroRegistro
+      type: object
+      properties:
+        dosificadorId:
+          type: string
+          format: uuid
+        fechaSalida:
+          type: string
+          format: date-time
+          nullable: true
+        fechaActivacion:
+          type: string
+          format: date-time
+          nullable: true
+        numeroRegistro:
+          type: string
+        estatusActivacion:
+          type: boolean
+        usuario:
+          "$ref": "#/components/schemas/Usuario"
+      additionalProperties: false
+    DosificadorCreacionDto:
+      required:
+      - estatusActivacion
+      - numeroRegistro
+      type: object
+      properties:
+        dosificadorId:
+          type: string
+          format: uuid
+        fechaSalida:
+          type: string
+          format: date-time
+          nullable: true
+        numeroRegistro:
+          type: string
+        estatusActivacion:
+          type: boolean
+      additionalProperties: false
+    Gato:
+      required:
+      - nombre
+      - usuarioId
+      type: object
+      properties:
+        gatoId:
+          type: string
+          format: uuid
+        usuarioId:
+          type: string
+          format: uuid
+        collarId:
+          type: string
+          format: uuid
+          nullable: true
+        nombre:
+          type: string
+        raza:
+          type: string
+          nullable: true
+        sexo:
+          type: string
+          nullable: true
+        edad:
+          maximum: 25
+          minimum: 0
+          type: integer
+          format: int32
+          nullable: true
+        imagenGato:
+          type: string
+          nullable: true
+        usuario:
+          "$ref": "#/components/schemas/Usuario"
+        collar:
+          "$ref": "#/components/schemas/Collar"
+      additionalProperties: false
+    GatoEntidadDto:
+      type: object
+      properties:
+        nombre:
+          type: string
+          nullable: true
+        raza:
+          type: string
+          nullable: true
+        sexo:
+          type: string
+          nullable: true
+        edad:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Horario:
+      required:
+      - diaDeLaSemanaId
+      - hora
+      - usuarioId
+      type: object
+      properties:
+        horarioId:
+          type: string
+          format: uuid
+        diaDeLaSemanaId:
+          type: integer
+          format: int32
+        usuarioId:
+          type: string
+          format: uuid
+        hora:
+          type: string
+          format: date-time
+        usuario:
+          "$ref": "#/components/schemas/Usuario"
+        diadelaSemana:
+          "$ref": "#/components/schemas/DiadelaSemana"
+      additionalProperties: false
+    HorarioEntidadDto:
+      required:
+      - diaDeLaSemanaId
+      - hora
+      type: object
+      properties:
+        horarioId:
+          type: string
+          format: uuid
+        diaDeLaSemanaId:
+          type: integer
+          format: int32
+        hora:
+          type: string
+          format: date-time
+      additionalProperties: false
+    HorarioModificarDto:
+      type: object
+      properties:
+        diaDeLaSemanaId:
+          type: integer
+          format: int32
+          nullable: true
+        hora:
+          type: string
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    ModificarAvisoDto:
+      type: object
+      properties:
+        limpiarContenedor:
+          type: string
+          format: date-time
+        limpiarPlato:
+          type: string
+          format: date-time
+        caducidad:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ModificarCollarDto:
+      type: object
+      properties:
+        numeroRegistro:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ModificarGatoDto:
+      type: object
+      properties:
+        nombre:
+          type: string
+          nullable: true
+        raza:
+          type: string
+          nullable: true
+        sexo:
+          type: string
+          nullable: true
+        edad:
+          maximum: 25
+          minimum: 0
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: false
+    ModificarUsuario:
+      type: object
+      properties:
+        nombre:
+          type: string
+          nullable: true
+        apellidoPaterno:
+          type: string
+          nullable: true
+        apellidoMaterno:
+          type: string
+          nullable: true
+      additionalProperties: false
+    NuevaActividadFelinaDto:
+      required:
+      - fechaFin
+      - fechaInicio
+      - gatoId
+      type: object
+      properties:
+        actividadFelinaId:
+          type: string
+          format: uuid
+        gatoId:
+          type: string
+          format: uuid
+        fechaInicio:
+          type: string
+          format: date-time
+        fechaFin:
+          type: string
+          format: date-time
+        aproximaciones:
+          type: integer
+          format: int32
+        alimentoConsumido:
+          type: number
+          format: double
+        aproximacionesSinConsumo:
+          type: integer
+          format: int32
+      additionalProperties: false
+    NuevoAvisoDto:
+      required:
+      - caducidad
+      - limpiarContenedor
+      - limpiarPlato
+      type: object
+      properties:
+        avisoId:
+          type: string
+          format: uuid
+        limpiarContenedor:
+          type: string
+          format: date-time
+        limpiarPlato:
+          type: string
+          format: date-time
+        caducidad:
+          type: string
+          format: date-time
+        alimentoDisponible:
+          type: integer
+          format: int32
+      additionalProperties: false
+    NuevoRegistroDto:
+      required:
+      - collarId
+      - consumo
+      - dosificadorId
+      - duracion
+      - hora
+      type: object
+      properties:
+        registroId:
+          type: string
+          format: uuid
+        dosificadorId:
+          type: string
+          format: uuid
+        collarId:
+          type: string
+          format: uuid
+        duracion:
+          type: string
+          format: date-time
+        consumo:
+          type: number
+          format: double
+        hora:
+          type: string
+          format: date-time
+        integradoAAnalisis:
+          type: boolean
+      additionalProperties: false
+    NuevoUsuario:
+      required:
+      - email
+      - password
+      - userName
+      type: object
+      properties:
+        userName:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+      additionalProperties: false
+    PasswordChange:
+      required:
+      - newPassword
+      - oldPassword
+      - username
+      type: object
+      properties:
+        username:
+          type: string
+        oldPassword:
+          type: string
+        newPassword:
+          type: string
+      additionalProperties: false
+    Registro:
+      required:
+      - collarId
+      - consumo
+      - dosificadorId
+      - duracion
+      - hora
+      type: object
+      properties:
+        registroId:
+          type: string
+          format: uuid
+        dosificadorId:
+          type: string
+          format: uuid
+        collarId:
+          type: string
+          format: uuid
+        duracion:
+          type: string
+          format: date-time
+        consumo:
+          type: number
+          format: double
+        hora:
+          type: string
+          format: date-time
+        integradoAAnalisis:
+          type: boolean
+        dosificador:
+          "$ref": "#/components/schemas/Dosificador"
+        collar:
+          "$ref": "#/components/schemas/Collar"
+      additionalProperties: false
+    RespuestaAutenticacion:
+      type: object
+      properties:
+        token:
+          type: string
+          nullable: true
+        expiracion:
+          type: string
+          format: date-time
+      additionalProperties: false
+    Usuario:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        userName:
+          type: string
+          nullable: true
+        normalizedUserName:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        normalizedEmail:
+          type: string
+          nullable: true
+        emailConfirmed:
+          type: boolean
+        passwordHash:
+          type: string
+          nullable: true
+        securityStamp:
+          type: string
+          nullable: true
+        concurrencyStamp:
+          type: string
+          nullable: true
+        phoneNumber:
+          type: string
+          nullable: true
+        phoneNumberConfirmed:
+          type: boolean
+        twoFactorEnabled:
+          type: boolean
+        lockoutEnd:
+          type: string
+          format: date-time
+          nullable: true
+        lockoutEnabled:
+          type: boolean
+        accessFailedCount:
+          type: integer
+          format: int32
+        nombre:
+          type: string
+          nullable: true
+        apellidoPaterno:
+          type: string
+          nullable: true
+        apellidoMaterno:
+          type: string
+          nullable: true
+        imagenUsuario:
+          type: string
+          nullable: true
+        dosificadorId:
+          type: string
+          format: uuid
+          nullable: true
+        dosificador:
+          "$ref": "#/components/schemas/Dosificador"
+        aviso:
+          "$ref": "#/components/schemas/Aviso"
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+security:
+- Bearer: []

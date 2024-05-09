@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
-import { usuariosApi } from "../../services/httpclient"
+//import { crearCuentasApi } from "../../services/httpclient"
 import { DataTable } from 'primereact/datatable';
 import { InputText } from "primereact/inputtext"
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button'
-import {v4 as uuidv4} from 'uuid';
+//import {v4 as uuidv4} from 'uuid';
+
+//const cuentasApi = crearCuentasApi("");
 
 export const Perfil = () => {
     const [nombre, setNombre] = useState("");
@@ -26,28 +28,28 @@ export const Perfil = () => {
 
     useEffect(() => {
         console.log("prueba GET de API")
-        usuariosApi.apiUsuariosGet().then((response: any) => {
-            console.log(response)
-            setProducts(response.data)
-        })
+        // usuariosApi.apiUsuariosGet().then((response: any) => {
+        //     console.log(response)
+        //     setProducts(response.data)
+        // })
     }, [cambio])
 
     const envioUsuario = (()=>{
-        const usuario ={
-            usuarioId: uuidv4(),
-            nombre: nombre,
-            apellidoPaterno: apellidoPaterno,
-            apellidoMaterno: apellidoMaterno,
-            usuariosCorreo: usuariosCorreo,
-            password: null,
-            imagenUsuario: null,
-            dosificadorId: null
-        }
-        usuariosApi.apiUsuariosPost(usuario).then((response:any)=>{
-            console.log("prueba POST de API")
-            console.log(response)
-            setCambio(!cambio)
-        })
+        // const usuario ={
+        //     usuarioId: uuidv4(),
+        //     nombre: nombre,
+        //     apellidoPaterno: apellidoPaterno,
+        //     apellidoMaterno: apellidoMaterno,
+        //     usuariosCorreo: usuariosCorreo,
+        //     password: null,
+        //     imagenUsuario: null,
+        //     dosificadorId: null
+        // }
+        // usuariosApi.apiUsuariosPost(usuario).then((response:any)=>{
+        //     console.log("prueba POST de API")
+        //     console.log(response)
+        //     setCambio(!cambio)
+        // })
     });
 
     return (
