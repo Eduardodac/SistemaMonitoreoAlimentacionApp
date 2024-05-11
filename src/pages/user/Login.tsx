@@ -1,19 +1,56 @@
-import gato from "../../assets/gato.jpg"
-import { Image } from 'primereact/image';
-import { LoginForm } from '../../components/Login/LoginForm';
+import { useForm, FormProvider } from "react-hook-form";
+import { Button } from 'primereact/button';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import { InputTextCustom } from "../../shared/Form/InputTextCustom";
+import { LoginSchema } from "../../helpers/yupLogin";
+
+
+type DefaultType = {
+    UserName: string,
+    Password: string
+}
 
 export const Login = () => {
-  return (
-    <section className="m-auto bg-white text-center flex flex-row rounded min-w-7/12">
-        <article className="w-7/12 p-2 py-10">
-            <div className="text-3xl text-paletaIpn-guinda"> Bienvenido a Mittens </div>
-            <div className="w-full flex justify-center">
-                <Image src={gato} alt={"gato"} width="400"/>
-            </div>
-            <div> Sistema de monitoreo para alimentación de gatos </div>
+    const defaultValues: DefaultType = {
+        UserName: '',
+        Password: ''
+    }
+
+    const methods = useForm({
+        mode: 'onTouched',
+        resolver: yupResolver(LoginSchema),
+        defaultValues: defaultValues,
+    });
+
+    const { handleSubmit, reset } = methods;
+
+    const onSubmit = (data: any) => {
+        console.log(data)
+        reset();
+    }
+
+    return (
+        <article className="w-5/12 p-2 bg-fondo py-10">
+
+            <FormProvider {...methods}>
+                <form onSubmit={handleSubmit(onSubmit)} className="p-fluid space-y-5">
+                    <div className='text-xl mb-14 text-paletaIpn-guinda' >Inicio de Sesión</div>
+                    <InputTextCustom name='UserName' id='UserName' />
+                    <InputTextCustom name='Password' id='Password' />
+                    <div className='w-3/4 m-auto'>
+                        <Button type="submit" label="Submit" className={'mt-2'} outlined />
+                    </div>
+                    <section className='w-3/4 m-auto text-sm'>
+                        <div>¿Perdiste tu&nbsp;
+                            <a href='/usuario/registrar' className="underline text-blue-500">contraseña</a>
+                            ?</div>
+                        <div>¿No tienes cuenta?&nbsp;
+                            <a href='/usuario/registrar' className="underline text-blue-500">Registrate.</a>
+                        </div>
+                    </section>
+                </form>
+            </FormProvider>
         </article>
-        <article className="border border-guinda"></article>
-        <LoginForm/>
-    </section>
-  )
+    )
 }
