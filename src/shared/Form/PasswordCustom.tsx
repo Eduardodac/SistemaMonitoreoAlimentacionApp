@@ -1,4 +1,4 @@
-import { InputText } from "primereact/inputtext";
+import { Password } from "primereact/password";
 import { Controller, useFormContext } from "react-hook-form"
 
 type InputProps =
@@ -7,14 +7,14 @@ type InputProps =
         id: string
     }
 
-export const InputTextCustom = ({ name, id }: InputProps) => {
+export const PasswordCustom = ({ name, id }: InputProps) => {
     const { control, formState: { errors } } = useFormContext();
 
     return (
         <div className="field w-3/4 m-auto pt-2 max-w-72">
             <span className="p-float-label">
                 <Controller name={name} control={control} render={({ field }) => (
-                    <InputText {...field} className={`${errors[id] ? 'p-invalid' : ''}`} />
+                    <Password feedback={false} {...field} className={`${errors[id] ? 'p-invalid' : ''}`} />
                 )} />
                 <label htmlFor={name} className={`${errors[id] ? 'p-error' : ''}`}>{name}</label>
 

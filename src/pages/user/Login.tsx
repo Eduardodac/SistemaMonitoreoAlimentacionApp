@@ -32,7 +32,6 @@ export const Login = () => {
 
     return (
         <article className="w-5/12 p-2 bg-fondo py-10">
-
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(onSubmit)} className="p-fluid space-y-5">
                     <div className='text-xl mb-14 text-paletaIpn-guinda' >Inicio de Sesión</div>
