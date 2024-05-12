@@ -5,7 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { InputTextCustom } from "../../shared/Form/InputTextCustom";
 import { LoginSchema } from "../../helpers/yupLogin";
 
-
 type DefaultType = {
     UserName: string,
     Password: string
