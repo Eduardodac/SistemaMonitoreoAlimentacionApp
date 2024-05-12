@@ -2,9 +2,13 @@ import { Navigate, Outlet } from "react-router-dom"
 import { TopMenu } from "../shared/TopMenu"
 import { LeftMenu } from "../shared/LeftMenu"
 import { useAuthStore } from "../store/authStore";
+import { useEffect } from "react";
 
 export const AppNavigatorBar = () => {
     const { jwt } = useAuthStore();
+    useEffect(()=>{
+        console.log(jwt)
+    },[jwt])
   return (
     <div className="flex w-full h-full bg-fondo">
       <LeftMenu/>

@@ -6,6 +6,7 @@ import clock from "../assets/clock.png"
 import bell from "../assets/bell.png"
 import off from "../assets/off.png"
 import {MenuItemTemplate} from "./MenuItemTemplate";
+import { MenuItemCerrarSesionTemplate } from "./MenuItemCerrarSesionTemplate"
 
 export const leftMenuItems = [
     {
@@ -44,7 +45,7 @@ export const leftMenuItems = [
     ,
     {
         template : () => (
-            <MenuItemTemplate label = 'Cerrar Sesión' img = {off} path = ""/>
+            <MenuItemCerrarSesionTemplate label = 'Cerrar Sesión' img = {off} path = ""/>
         )
     },
 ];
