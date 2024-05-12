@@ -1,18 +1,18 @@
 import { CuentasApi } from "../openAPI";
 import { Configuration } from "../openAPI/configuration";
 
-const createApiConfig =((token:string)=>{
+const createApiConfig =((token:string | null)=>{
     const openApiConfig = new Configuration();
     openApiConfig.baseOptions = {
         headers: { 
             Authorization: 'Bearer ' + token,
         },
     };
-    openApiConfig.basePath = "https://localhost:7090"
+    openApiConfig.basePath = "http://localhost:7090"
     return openApiConfig
 })
 
-export const crearCuentasApi = ((token:string)=>{
+export const crearCuentasApi = ((token:string | null)=>{
     return new CuentasApi(createApiConfig(token));
 })
 

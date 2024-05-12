@@ -6,18 +6,18 @@ import { RegistroSchema } from "../../helpers/yupLogin";
 import { PasswordCustom } from "../../shared/Form/PasswordCustom";
 
 type DefaultType = {
-    UserName: string,
-    Email: string,
-    Password: string,
-    ConfirmPassword: string
+    username: string,
+    email: string,
+    password: string,
+    confirmPassword: string
 }
 
 export const Register = () => {
     const defaultValues: DefaultType = {
-        UserName: '',
-        Email: '',
-        Password: '',
-        ConfirmPassword: ''
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
     }
 
     const methods = useForm({
@@ -37,10 +37,10 @@ export const Register = () => {
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(onSubmit)} className="p-fluid space-y-3">
                     <div className='text-xl mb-8 text-paletaIpn-guinda' >Registro</div>
-                    <InputTextCustom name='UserName' id='UserName' />
-                    <InputTextCustom name='Email' id='Email' />
-                    <PasswordCustom name='Password' id='Password' />
-                    <PasswordCustom name='ConfirmPassword' id='ConfirmPassword' />
+                    <InputTextCustom name='username' id='username' />
+                    <InputTextCustom name='email' id='email' />
+                    <PasswordCustom name='password' id='password' />
+                    <PasswordCustom name='confirmPassword' id='confirmPassword' />
                     <div className='w-3/4 m-auto '>
                         <Button type="submit" label="Submit" className={'mt-2'} outlined />
                     </div>
