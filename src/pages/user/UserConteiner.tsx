@@ -21,7 +21,7 @@ export const UserConteiner = () => {
                     </div>
                     <div> Sistema de monitoreo para alimentación de gatos </div>
                 </article>
-                <article className="border border-guinda"></article>
+                <article className="border border-paletaIpn-guinda"></article>
                 {jwt != null ? <Navigate to="/home" state={{ from: location }} />
                 :<Outlet></Outlet>}
             </section>

@@ -22,5 +22,5 @@ export const RegistroSchema = yup.object().shape({
     confirmPassword: yup
         .string()
         .required("Confirme la contraseña")
-        .oneOf([yup.ref("Password")], "Las contraseñas no coinciden")
+        .oneOf([yup.ref("password")], "Las contraseñas no coinciden")
 });

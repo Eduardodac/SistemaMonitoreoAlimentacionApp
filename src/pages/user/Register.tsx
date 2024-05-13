@@ -4,6 +4,10 @@ import { InputTextCustom } from "../../shared/Form/InputTextCustom";
 import { Button } from "primereact/button";
 import { RegistroSchema } from "../../helpers/yupLogin";
 import { PasswordCustom } from "../../shared/Form/PasswordCustom";
+import { useAuthStore } from "../../store/authStore";
+import { crearCuentasApi } from "../../services/httpclient";
+import { Toast } from 'primereact/toast';
+import { useRef } from "react";
 
 type DefaultType = {
     username: string,
@@ -13,6 +17,14 @@ type DefaultType = {
 }
 
 export const Register = () => {
+    const { jwt, setJWT } = useAuthStore();
+    const CuentasApi = crearCuentasApi(jwt);
+
+    const toast = useRef<Toast>(null);
+    const showError = (message:string) => {
+        toast.current?.show({severity:'error', summary: 'Error', detail:message, life: 4000});
+    }
+    
     const defaultValues: DefaultType = {
         username: '',
         email: '',
@@ -26,14 +38,21 @@ export const Register = () => {
         defaultValues: defaultValues,
     });
 
-    const { handleSubmit, reset } = methods;
+    const { handleSubmit} = methods;
 
     const onSubmit = (data: any) => {
-        console.log(data)
-        reset();
+        CuentasApi.apiCuentasRegistrarPost(data).then(response => {
+            const jwtRecibido = response.data.token ?  response.data.token : null;
+            setJWT(jwtRecibido);
+        }).catch((errors)=>{
+            const error = errors.response.data[0].description? errors.response.data[0].description: "Error";
+            showError(error);
+            console.log(errors)
+        })
     }
     return (
         <article className="w-5/12 p-2 bg-fondo py-10">
+            <Toast ref={toast} />
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(onSubmit)} className="p-fluid space-y-3">
                     <div className='text-xl mb-8 text-paletaIpn-guinda' >Registro</div>

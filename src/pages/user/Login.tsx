@@ -1,12 +1,13 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { Button } from 'primereact/button';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useNavigate } from "react-router-dom";
 import { InputTextCustom } from "../../shared/Form/InputTextCustom";
 import { LoginSchema } from "../../helpers/yupLogin";
 import { useAuthStore } from "../../store/authStore";
 import { crearCuentasApi } from "../../services/httpclient";
 import { PasswordCustom } from "../../shared/Form/PasswordCustom";
+import { Toast } from 'primereact/toast';
+import { useRef } from "react";
 
 
 type DefaultType = {
@@ -17,9 +18,12 @@ type DefaultType = {
 
 export const Login = () => {
     const { jwt, setJWT } = useAuthStore();
-    const navigate = useNavigate();
-
     const CuentasApi = crearCuentasApi(jwt);
+    
+    const toast = useRef<Toast>(null);
+    const showError = (message:string) => {
+        toast.current?.show({severity:'error', summary: 'Error', detail:message, life: 4000});
+    }
 
     const defaultValues: DefaultType = {
         username: '',
@@ -39,15 +43,16 @@ export const Login = () => {
         CuentasApi.apiCuentasLoginPost(data).then(response => {
             const jwtRecibido = response.data.token ?  response.data.token : null;
             setJWT(jwtRecibido);
-        }).then(()=>{
-            navigate("/home");
         }).catch((errors)=>{
+            const error = errors.response.data? errors.response.data: "Error";
+            showError(error);
             console.log(errors)
         })
     }
 
     return (
         <article className="w-5/12 p-2 bg-fondo py-10">
+            <Toast ref={toast} />
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(onSubmit)} className="p-fluid space-y-5">
                     <div className='text-xl mb-14 text-paletaIpn-guinda' >Inicio de Sesión</div>

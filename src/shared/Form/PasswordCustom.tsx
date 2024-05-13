@@ -15,7 +15,7 @@ export const PasswordCustom = ({ name, id, label }: InputProps) => {
         <div className="field w-3/4 m-auto pt-2 max-w-72">
             <span className="p-float-label">
                 <Controller name={name} control={control} render={({ field }) => (
-                    <Password feedback={false} {...field} className={`${errors[id] ? 'p-invalid' : ''}`} />
+                    <Password feedback={false} toggleMask {...field} className={`${errors[id] ? 'p-invalid' : ''}`} />
                 )} />
                 <label htmlFor={name} className={`${errors[id] ? 'p-error' : ''}`}>{label}</label>
 
