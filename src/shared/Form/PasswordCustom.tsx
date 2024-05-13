@@ -4,10 +4,11 @@ import { Controller, useFormContext } from "react-hook-form"
 type InputProps =
     {
         name: string,
-        id: string
+        id: string,
+        label: string
     }
 
-export const PasswordCustom = ({ name, id }: InputProps) => {
+export const PasswordCustom = ({ name, id, label }: InputProps) => {
     const { control, formState: { errors } } = useFormContext();
 
     return (
@@ -16,7 +17,7 @@ export const PasswordCustom = ({ name, id }: InputProps) => {
                 <Controller name={name} control={control} render={({ field }) => (
                     <Password feedback={false} {...field} className={`${errors[id] ? 'p-invalid' : ''}`} />
                 )} />
-                <label htmlFor={name} className={`${errors[id] ? 'p-error' : ''}`}>{name}</label>
+                <label htmlFor={name} className={`${errors[id] ? 'p-error' : ''}`}>{label}</label>
 
             </span>
             <div className='mt-1 w-full text-justify max-w-72'>

@@ -6,6 +6,7 @@ import { InputTextCustom } from "../../shared/Form/InputTextCustom";
 import { LoginSchema } from "../../helpers/yupLogin";
 import { useAuthStore } from "../../store/authStore";
 import { crearCuentasApi } from "../../services/httpclient";
+import { PasswordCustom } from "../../shared/Form/PasswordCustom";
 
 
 type DefaultType = {
@@ -50,8 +51,8 @@ export const Login = () => {
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(onSubmit)} className="p-fluid space-y-5">
                     <div className='text-xl mb-14 text-paletaIpn-guinda' >Inicio de Sesión</div>
-                    <InputTextCustom name='username' id='username' />
-                    <InputTextCustom name='password' id='password' />
+                    <InputTextCustom name='username' id='username' label='Username' />
+                    <PasswordCustom name='password' id='password' label='Contraseña'  />
                     <div className='w-3/4 m-auto'>
                         <Button type="submit" label="Submit" className={'mt-2'} outlined />
                     </div>
