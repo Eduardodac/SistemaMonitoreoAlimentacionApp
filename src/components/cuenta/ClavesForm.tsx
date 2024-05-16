@@ -1,48 +1,44 @@
 import { FormProvider, useForm } from "react-hook-form";
-import { InputTextCustom } from "../../shared/Form/InputTextCustom"
-import { Toast } from "primereact/toast";
-import { useRef } from "react";
-
-type DefaultType = {
-    username: string,
-    email: string
-}
+import { InputTextCustom } from "../../shared/Form/InputTextCustom";
+import useUserStore, { IClavesForm } from "../../store/cuentaStore";
+import { useEffect } from "react";
 
 export const ClavesForm = () => {
-
-    const defaultValues: DefaultType = {
-        username: '',
+    const { userData } = useUserStore();
+    const defaultValues: IClavesForm = {
+        userName: '',
         email: ''
     }
 
-    const toast = useRef<Toast>(null);
-    const showError = (message: string) => {
-        toast.current?.show({ severity: 'error', summary: 'Error', detail: message, life: 4000 });
-    }
+    useEffect(() => {
+        ActualizarValores(userData.clavesForm);
+    }, [userData.clavesForm])
 
     const methods = useForm({
         defaultValues: defaultValues,
     });
 
-    const { handleSubmit } = methods;
+    const { handleSubmit, setValue } = methods;
 
-    const onSubmit = (data: DefaultType) => {
+    const ActualizarValores = (valores: IClavesForm) => {
+        setValue('userName', valores.userName);
+        setValue('email', valores.email);
+    }
+
+    const onSubmit = () => {
 
     }
 
     return (
         <article className="my-5 border-2 border-paletaIpn-guinda w-3/4 m-auto max-w-175">
-            <Toast ref={toast} />
             <FormProvider {...methods}>
                 <section className="text-base p-5 font-bold text-paletaIpn-guinda">Información de Cuenta</section>
                 <form onSubmit={handleSubmit(onSubmit)} className=" flex flex-row justify-center">
                     <section className=" flex flex-row justify-center">
                         <div className="w-2/5 mr-10">
-                            <label htmlFor="">Username:</label>
-                            <InputTextCustom name="username" id="username" label="Username" className="w-full" disabled={true} />
+                            <InputTextCustom name="userName" id="userName" label="Username" className="w-full" disabled={true} />
                         </div>
                         <div className="w-2/5 ml-10">
-                            <label htmlFor="">Correo Electrónico:</label>
                             <InputTextCustom name="email" id="email" label="Correo Electrónico" className="w-full" disabled={true} />
                         </div>
                     </section>

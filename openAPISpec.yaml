@@ -1,7 +1,7 @@
 ---
 openapi: 3.0.1
 info:
-  title: SistemaMonitoreoAlimentacionApi
+  title: WebAPI
   version: v1
 paths:
   "/api/ActividadFelina/{gatoId}":
@@ -286,13 +286,13 @@ paths:
           content:
             text/plain:
               schema:
-                "$ref": "#/components/schemas/ModificarUsuario"
+                "$ref": "#/components/schemas/GetUsuario"
             application/json:
               schema:
-                "$ref": "#/components/schemas/ModificarUsuario"
+                "$ref": "#/components/schemas/GetUsuario"
             text/json:
               schema:
-                "$ref": "#/components/schemas/ModificarUsuario"
+                "$ref": "#/components/schemas/GetUsuario"
   "/api/Cuentas/modificarUsuario":
     put:
       tags:
@@ -311,6 +311,35 @@ paths:
       responses:
         '200':
           description: Success
+  "/api/Cuentas/Imagen":
+    put:
+      tags:
+      - Cuentas
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                Imagen:
+                  type: string
+                  format: binary
+            encoding:
+              Imagen:
+                style: form
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
   "/api/DiasdelaSemana":
     get:
       tags:
@@ -532,6 +561,32 @@ paths:
           application/*+json:
             schema:
               "$ref": "#/components/schemas/ModificarGatoDto"
+      responses:
+        '200':
+          description: Success
+  "/api/Gatos/imagen/{gatoId}":
+    put:
+      tags:
+      - Gatos
+      parameters:
+      - name: gatoId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                Imagen:
+                  type: string
+                  format: binary
+            encoding:
+              Imagen:
+                style: form
       responses:
         '200':
           description: Success
@@ -939,6 +994,31 @@ components:
         edad:
           type: integer
           format: int32
+      additionalProperties: false
+    GetUsuario:
+      type: object
+      properties:
+        apellidoMaterno:
+          type: string
+          nullable: true
+        apellidoPaterno:
+          type: string
+          nullable: true
+        dosificadorId:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        imagenUsuario:
+          type: string
+          nullable: true
+        nombre:
+          type: string
+          nullable: true
+        userName:
+          type: string
+          nullable: true
       additionalProperties: false
     Horario:
       required:

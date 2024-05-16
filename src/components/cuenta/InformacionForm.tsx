@@ -1,34 +1,45 @@
 import { Toast } from "primereact/toast";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { InputTextCustom } from "../../shared/Form/InputTextCustom";
 import { Button } from "primereact/button";
-
-type DefaultType = {
-    nombre: string,
-    apellidoPaterno: string,
-    apellidoMaterno: string,
-}
+import useUserStore, { IInformacionForm } from '../../store/cuentaStore';
 
 export const InformacionForm = () => {
-    const defaultValues: DefaultType = {
+
+    const { userData } = useUserStore();
+
+    const defaultValues: IInformacionForm = {
         nombre: '',
         apellidoPaterno: '',
         apellidoMaterno: '',
     }
 
     const toast = useRef<Toast>(null);
+    const showSuccess = () => {
+        toast.current?.show({severity:'success', summary: 'Success', detail:'Message Content', life: 3000});
+    }
     const showError = (message: string) => {
         toast.current?.show({ severity: 'error', summary: 'Error', detail: message, life: 4000 });
     }
+
+    useEffect(()=>{
+        ActualizarValores(userData.informacionForm);
+    },[userData.informacionForm])
 
     const methods = useForm({
         defaultValues: defaultValues,
     });
 
-    const { handleSubmit } = methods;
+    const { handleSubmit, setValue } = methods;
 
-    const onSubmit = (data: DefaultType) => {
+    const ActualizarValores = (valores:IInformacionForm) =>{
+        setValue('nombre', valores.nombre);
+        setValue('apellidoPaterno', valores.apellidoPaterno);
+        setValue('apellidoMaterno', valores.apellidoMaterno);
+    }
+
+    const onSubmit = (data: IInformacionForm) => {
 
     }
 
@@ -43,12 +54,12 @@ export const InformacionForm = () => {
                             <InputTextCustom name="nombre" id="nombre" label="Nombre" className="w-full" />
                         </div>
                         <div className="w-2/5 ml-10">
-                            <InputTextCustom name="email" id="email" label="Correo Electrónico" className="w-full" />
+                            <InputTextCustom name="apellidoPaterno" id="apellidoPaterno" label="Apellido Paterno" className="w-full" />
                         </div>
                     </section>
                     <section className=" flex flex-row justify-center m-auto">
                         <div className="w-2/5 mr-10">
-                            <InputTextCustom name="username" id="username" label="Username" className="w-full" />
+                            <InputTextCustom name="apellidoMaterno" id="apellidoMaterno" label="Apellido Materno" className="w-full" />
                         </div>
                         <div className="w-2/5 ml-10">
                             <div className={`field w-51 m-auto pt-2`}>
