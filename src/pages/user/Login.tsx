@@ -59,7 +59,7 @@ export const Login = () => {
                     <InputTextCustom name='username' id='username' label='Username' className="max-w-72"/>
                     <PasswordCustom name='password' id='password' label='Contraseña' className="max-w-72"/>
                     <div className='w-3/4 m-auto'>
-                        <Button type="submit" label="Submit" className={'mt-2'} outlined />
+                        <Button type="submit" label="Iniciar sesión" className={'mt-2'} outlined />
                     </div>
                     <section className='w-3/4 m-auto text-sm'>
                         <div>¿Perdiste tu&nbsp;

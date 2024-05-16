@@ -4,7 +4,7 @@ import { InformacionForm } from '../../components/cuenta/InformacionForm';
 export const Perfil = () => {
 
     return (
-        <article>
+        <article className='pb-10'>
             <ImagenCuenta/>
             <ClavesForm/>
             <InformacionForm/>

@@ -16,8 +16,8 @@ export const ClavesForm = () => {
     }
 
     const toast = useRef<Toast>(null);
-    const showError = (message:string) => {
-        toast.current?.show({severity:'error', summary: 'Error', detail:message, life: 4000});
+    const showError = (message: string) => {
+        toast.current?.show({ severity: 'error', summary: 'Error', detail: message, life: 4000 });
     }
 
     const methods = useForm({
@@ -31,19 +31,23 @@ export const ClavesForm = () => {
     }
 
     return (
-        <article className="m-5 border-2 ">
+        <article className="my-5 border-2 border-paletaIpn-guinda w-3/4 m-auto max-w-175">
             <Toast ref={toast} />
             <FormProvider {...methods}>
-                <section className="text-base">Información de Cuenta</section>
+                <section className="text-base p-5 font-bold text-paletaIpn-guinda">Información de Cuenta</section>
                 <form onSubmit={handleSubmit(onSubmit)} className=" flex flex-row justify-center">
-                    <div className="w-1/4">
-                        <InputTextCustom name="username" id="username" label="Username"/>
-                    </div>
-                    <div className="w-1/4">
-                        <InputTextCustom name="email" id="email" label="Correo Electrónico" />
-                    </div>
+                    <section className=" flex flex-row justify-center">
+                        <div className="w-2/5 mr-10">
+                            <label htmlFor="">Username:</label>
+                            <InputTextCustom name="username" id="username" label="Username" className="w-full" disabled={true} />
+                        </div>
+                        <div className="w-2/5 ml-10">
+                            <label htmlFor="">Correo Electrónico:</label>
+                            <InputTextCustom name="email" id="email" label="Correo Electrónico" className="w-full" disabled={true} />
+                        </div>
+                    </section>
                 </form>
-                </FormProvider>
+            </FormProvider>
         </article>
     )
 }

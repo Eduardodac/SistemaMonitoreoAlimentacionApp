@@ -6,17 +6,18 @@ type InputProps =
         name: string,
         id: string,
         label: string,
-        className?: string
+        className?: string,
+        disabled?: boolean
     }
 
-export const PasswordCustom = ({ name, id, label, className="" }: InputProps) => {
+export const PasswordCustom = ({ name, id, label, className="", disabled= false }: InputProps) => {
     const { control, formState: { errors } } = useFormContext();
 
     return (
         <div className={`field w-3/4 m-auto pt-2 ${className}`}>
             <span className="p-float-label">
                 <Controller name={name} control={control} render={({ field }) => (
-                    <Password feedback={false} toggleMask {...field} className={`${errors[id] ? 'p-invalid' : ''}`} />
+                    <Password disabled={disabled} feedback={false} toggleMask {...field} className={`${errors[id] ? 'p-invalid' : ''}`} />
                 )} />
                 <label htmlFor={name} className={`${errors[id] ? 'p-error' : ''}`}>{label}</label>
 
