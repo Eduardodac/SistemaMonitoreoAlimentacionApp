@@ -56,8 +56,8 @@ export const Login = () => {
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(onSubmit)} className="p-fluid space-y-5">
                     <div className='text-xl mb-14 text-paletaIpn-guinda' >Inicio de Sesión</div>
-                    <InputTextCustom name='username' id='username' label='Username' />
-                    <PasswordCustom name='password' id='password' label='Contraseña'  />
+                    <InputTextCustom name='username' id='username' label='Username' className="max-w-72"/>
+                    <PasswordCustom name='password' id='password' label='Contraseña' className="max-w-72"/>
                     <div className='w-3/4 m-auto'>
                         <Button type="submit" label="Submit" className={'mt-2'} outlined />
                     </div>

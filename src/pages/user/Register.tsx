@@ -56,10 +56,10 @@ export const Register = () => {
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(onSubmit)} className="p-fluid space-y-3">
                     <div className='text-xl mb-8 text-paletaIpn-guinda' >Registro</div>
-                    <InputTextCustom name='username' id='username' label='Username'/>
-                    <InputTextCustom name='email' id='email' label='Correo Electrónico' />
-                    <PasswordCustom name='password' id='password' label='Contraseña' />
-                    <PasswordCustom name='confirmPassword' id='confirmPassword' label='Confirmar Contraseña' />
+                    <InputTextCustom name='username' id='username' label='Username'  className="max-w-72"/>
+                    <InputTextCustom name='email' id='email' label='Correo Electrónico' className="max-w-72"/>
+                    <PasswordCustom name='password' id='password' label='Contraseña' className="max-w-72" />
+                    <PasswordCustom name='confirmPassword' id='confirmPassword' label='Confirmar Contraseña' className="max-w-72" />
                     <div className='w-3/4 m-auto '>
                         <Button type="submit" label="Submit" className={'mt-2'} outlined />
                     </div>
