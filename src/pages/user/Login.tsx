@@ -58,7 +58,7 @@ export const Login = () => {
                     <div className='text-xl mb-14 text-paletaIpn-guinda' >Inicio de Sesión</div>
                     <InputTextCustom name='username' id='username' label='Username' className="max-w-72"/>
                     <PasswordCustom name='password' id='password' label='Contraseña' className="max-w-72"/>
-                    <div className='w-3/4 m-auto'>
+                    <div className='w-3/4 m-auto max-w-72'>
                         <Button type="submit" label="Iniciar sesión" className={'mt-2'} outlined />
                     </div>
                     <section className='w-3/4 m-auto text-sm'>

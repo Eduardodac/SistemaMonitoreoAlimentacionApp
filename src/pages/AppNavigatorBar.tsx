@@ -10,7 +10,7 @@ export const AppNavigatorBar = () => {
         console.log(jwt)
     },[jwt])
   return (
-    <div className="flex w-full h-fit bg-fondo">
+    <div className="flex w-full h-fit min-h-full bg-fondo">
       <LeftMenu/>
 
       <section className="flex flex-col w-full">

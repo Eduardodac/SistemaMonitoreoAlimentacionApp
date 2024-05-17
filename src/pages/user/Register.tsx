@@ -60,7 +60,7 @@ export const Register = () => {
                     <InputTextCustom name='email' id='email' label='Correo Electrónico' className="max-w-72"/>
                     <PasswordCustom name='password' id='password' label='Contraseña' className="max-w-72" />
                     <PasswordCustom name='confirmPassword' id='confirmPassword' label='Confirmar Contraseña' className="max-w-72" />
-                    <div className='w-3/4 m-auto '>
+                    <div className='w-3/4 m-auto max-w-72'>
                         <Button type="submit" label="Registrarse" className={'mt-2'} outlined />
                     </div>
                 </form>
