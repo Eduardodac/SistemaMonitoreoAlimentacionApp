@@ -4,10 +4,14 @@ import { FormProvider, useForm } from "react-hook-form";
 import { InputTextCustom } from "../../shared/Form/InputTextCustom";
 import { Button } from "primereact/button";
 import useUserStore, { IInformacionForm } from '../../store/cuentaStore';
+import { useAuthStore } from "../../store/authStore";
+import { crearCuentasApi } from "../../services/httpclient";
 
 export const InformacionForm = () => {
 
-    const { userData } = useUserStore();
+    const { userData, setUserData } = useUserStore();
+    const { jwt } = useAuthStore();
+    const CuentasApi = crearCuentasApi(jwt);
 
     const defaultValues: IInformacionForm = {
         nombre: '',
@@ -16,8 +20,8 @@ export const InformacionForm = () => {
     }
 
     const toast = useRef<Toast>(null);
-    const showSuccess = () => {
-        toast.current?.show({severity:'success', summary: 'Success', detail:'Message Content', life: 3000});
+    const showSuccess = (message: string) => {
+        toast.current?.show({severity:'info', summary: 'Success', detail: message, life: 3000});
     }
     const showError = (message: string) => {
         toast.current?.show({ severity: 'error', summary: 'Error', detail: message, life: 4000 });
@@ -40,8 +44,23 @@ export const InformacionForm = () => {
     }
 
     const onSubmit = (data: IInformacionForm) => {
-
+        CuentasApi.apiCuentasModificarUsuarioPut(data).then(()=>{
+            setUserData({
+                informacionForm: {
+                    apellidoMaterno: data.apellidoMaterno ? data.apellidoMaterno : "",
+                    apellidoPaterno: data.apellidoPaterno ? data.apellidoPaterno : "",
+                    nombre: data.nombre ? data.nombre : "",
+                }
+            });
+            showSuccess("Edición exitosa.");
+        }).catch((error)=>{
+            showError("Ocurrió un error en la edición.");
+            ActualizarValores(userData.informacionForm);
+            console.error(error);
+        });
     }
+
+
 
     return (
         <article className="my-5 border-2 border-paletaIpn-guinda w-3/4 m-auto max-w-175">
@@ -68,7 +87,7 @@ export const InformacionForm = () => {
                     </section>
                     <section className="flex justify-end pr-5 pb-5">
                         <Button type="submit" label="Editar" className={'mt-2 mr-5'} outlined />
-                        <Button type="reset" label="Reset" className={'mt-2'} outlined />
+                        <Button type="reset" label="Reset" className={'mt-2'} onClick={()=>{ActualizarValores(userData.informacionForm)}} outlined />
                     </section>
                 </form>
             </FormProvider>

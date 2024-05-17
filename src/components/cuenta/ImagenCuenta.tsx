@@ -6,6 +6,7 @@ import useUserStore from "../../store/cuentaStore";
 import { crearCuentasApi } from "../../services/httpclient";
 import { useAuthStore } from "../../store/authStore";
 import { Toast } from "primereact/toast";
+import { Image } from "primereact/image";
 
 export const ImagenCuenta = () => {
 
@@ -38,7 +39,7 @@ export const ImagenCuenta = () => {
     }
 
     const showSuccess = (message: string) => {
-        toast.current?.show({severity:'success', summary: 'Éxito', detail:message, life: 3000});
+        toast.current?.show({severity:'info', summary: 'Éxito', detail:message, life: 3000});
     }
     const showError = (message: string) => {
         toast.current?.show({ severity: 'error', summary: 'Error', detail: message, life: 4000 });
@@ -51,7 +52,7 @@ export const ImagenCuenta = () => {
   return (
     <article className='flex flex-col items-center'>
         <Toast ref={toast} />
-        <Avatar image={imagen} shape="circle" style={{width:'200px', height: '200px'}} className="mb-5"/>
+        <Image src={imagen} width="200" alt="profile-picture" className="mb-5 rounded-md" preview/>
         <FileUpload 
             ref={fileUploadRef}
             mode="basic" 
