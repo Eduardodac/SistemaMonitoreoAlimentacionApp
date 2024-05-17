@@ -27,6 +27,7 @@ module.exports = {
           rosa: "#F2DCEB",
           blanco: "#F2F2F2"
         },
+        fondoCards: "#09b498",
         fondo:"#FBFEF9",
         darkFondo: "#f0f0c959"
       },

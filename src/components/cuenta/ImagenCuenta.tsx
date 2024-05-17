@@ -1,6 +1,5 @@
 import avatar from "../../assets/avatar.jpg";
 import { FileUpload, FileUploadHandlerEvent } from 'primereact/fileupload';
-import { Avatar } from 'primereact/avatar';
 import { useEffect, useRef, useState } from "react";
 import useUserStore from "../../store/cuentaStore";
 import { crearCuentasApi } from "../../services/httpclient";

@@ -1,6 +1,10 @@
+import { CardGato } from "../../components/gatos/cards/CardGato"
 
 export const Gatos = () => {
   return (
-    <div>Aquí se verán los perfiles de los gatos</div>
+    <article>
+        <section className="text-lg font-bold text-paletaIpn-guinda self-start mb-5">Perfil de tus mascotas</section>
+        <CardGato/>
+    </article>
   )
 }
