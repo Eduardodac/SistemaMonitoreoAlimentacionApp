@@ -7,20 +7,20 @@ export const InformacionGato = () => {
     return (
         <article className="flex flex-col h-full justify-center relative" onMouseEnter={() => { setHover(true) }} onMouseLeave={() => { setHover(false) }}>
             <div className={`pl-10 my-auto ${hover ? '' : 'visible'}`}>
-                <section className="text-xl font-bold text-paletaIpn-guinda mb-3">Información de {"gato"}</section>
-                <section className="flex flex-row text-base">
-                    <div className="w-2/5 space-y-2 text-lg flex flex-col">
-                        <span className="bg-fondoCards rounded-md p-1 text-fondo w-fit">Raza:</span>
-                        <span className="bg-fondoCards rounded-md p-1 text-fondo w-fit">Sexo:</span>
+                <section className="text-xl font-bold text-paletaIpn-guinda mb-3">Ficha Informativa</section>
+                <section className="grid grid-cols-2 text-base text-fondo bg-fondoCards w-3/4 p-2 rounded-lg">
+                    <div className="space-y-2 text-lg flex flex-col">
+                        <span>Nombre:</span>
+                        <span>Raza:</span>
                     </div>
-                    <div className="w-2/5 space-y-2 text-lg flex flex-col">
-                        <span className="bg-fondoCards rounded-md p-1 text-fondo w-fit">Edad:</span>
-                        <span className="bg-fondoCards rounded-md p-1 text-fondo w-fit">Registro Collar:</span>
+                    <div className="space-y-2 text-lg flex flex-col">
+                        <span>Sexo:</span>
+                        <span>Edad:</span>
                     </div>
                 </section>
 
                 <div className="flex justify-end">
-                    <Button type="submit" label="Editar" className={'mt-2 mr-5 text-sm '} outlined />
+                    <Button type="submit" label="Editar" className={'mt-1 mr-5 text-sm '} outlined />
                 </div>
             </div>
             <motion.div
@@ -33,22 +33,21 @@ export const InformacionGato = () => {
                     className="pl-10 my-auto mt-4"
                     initial={false}
                     animate={{ opacity: hover ? 1 : 0 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
+                    transition={{ delay: 0.3, duration: 0.7 }}
                 >
-                    <section className="text-xl font-bold text-paletaIpn-guinda mb-3">Información de {"gato"}</section>
-                    <section className="flex flex-row text-base">
-                        <div className="w-2/5 space-y-2 text-lg flex flex-col">
-                            <span className="bg-fondo rounded-md p-1 text-fondoCards w-fit">Raza:</span>
-                            <span className="bg-fondo rounded-md p-1 text-fondoCards w-fit">Sexo:</span>
+                    <section className="text-xl font-bold text-paletaIpn-guinda mb-3">Información de Collar</section>
+                    <section className="grid grid-cols-2 text-base text-fondoCards bg-fondo w-3/4 p-2 rounded-lg">
+                        <div className="space-y-2 text-lg flex flex-col">
+                            <span>Registro:</span>
+                            <span>Estatus:</span>
                         </div>
-                        <div className="w-2/5 space-y-2 text-lg flex flex-col">
-                            <span className="bg-fondo rounded-md p-1 text-fondoCards w-fit">Edad:</span>
-                            <span className="bg-fondo rounded-md p-1 text-fondoCards w-fit">Registro Collar:</span>
+                        <div className="space-y-2 text-lg flex flex-col">
+                            <span>F. Activacion:</span>
+                            
                         </div>
                     </section>
-
                     <div className="flex justify-end pb-5">
-                        <Button type="submit" label="Editar" className={'mt-2 mr-5 text-sm '} />
+                        <Button type="submit" label="Editar" className={`mt-1 mr-5 text-sm ${hover ? "visible" : "hidden"}`} />
                     </div>
 
                 </motion.div>
