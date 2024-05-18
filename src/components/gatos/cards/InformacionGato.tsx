@@ -20,7 +20,7 @@ export const InformacionGato = () => {
                 </section>
 
                 <div className="flex justify-end">
-                    <Button type="submit" label="Editar" className={'mt-1 mr-5 text-sm '} outlined />
+                    <Button label="Editar" icon='pi pi-pencil' className={'mt-1 mr-5 text-sm '} />
                 </div>
             </div>
             <motion.div
@@ -47,7 +47,7 @@ export const InformacionGato = () => {
                         </div>
                     </section>
                     <div className="flex justify-end pb-5">
-                        <Button type="submit" label="Editar" className={`mt-1 mr-5 text-sm ${hover ? "visible" : "hidden"}`} />
+                        <Button label="Editar" icon='pi pi-pencil' className={`mt-1 mr-5 text-sm ${hover ? "visible" : "hidden"}`}/>
                     </div>
 
                 </motion.div>

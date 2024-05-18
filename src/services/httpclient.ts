@@ -1,4 +1,4 @@
-import { CuentasApi } from "../openAPI";
+import { CuentasApi, GatosApi } from "../openAPI";
 import { Configuration } from "../openAPI/configuration";
 
 const createApiConfig =((token:string | null)=>{
@@ -14,6 +14,10 @@ const createApiConfig =((token:string | null)=>{
 
 export const crearCuentasApi = ((token:string | null)=>{
     return new CuentasApi(createApiConfig(token));
+})
+
+export const crearGatosApi = ((token:string | null)=>{
+    return new GatosApi(createApiConfig(token));
 })
 
 
