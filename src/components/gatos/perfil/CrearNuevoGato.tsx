@@ -62,6 +62,7 @@ export const CrearNuevoGato = () => {
             GatosApiApi.apiGatosGatoIdPost(gatoId, values).then((response) => {
                 console.log(response);
                 setVisible(false)
+                reset();
                 showSuccess("Creación exitosa");
             }).catch((error) => {
                 showError(ObtenerMensajeErrorGato(error, "Error al crear el gato"));
@@ -90,7 +91,7 @@ export const CrearNuevoGato = () => {
     return (
 
         <article className="mt-16 w-full ">
-            <Toast ref={toast} position="right" />
+            <Toast ref={toast} />
             <motion.div
                 className="rounded-full h-14 bg-fondoCards w-56 p-3 m-auto flex flex-row items-center card-cats cursor-pointer"
                 onClick={() => { setVisible(true); }}
