@@ -13,8 +13,8 @@ export interface ICollar {
 
 export interface IGato {
     nombre: string;
-    raza: string;
-    sexo: string;
+    raza?: string | undefined;
+    sexo?: string | undefined;
     edad: number;
 }
 

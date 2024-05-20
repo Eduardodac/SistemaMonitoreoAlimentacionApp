@@ -31,7 +31,7 @@ const defaultValues: DefaultType = {
 export const CrearNuevoGato = () => {
     const [visible, setVisible] = useState<boolean>(false);
     const { jwt } = useAuthStore();
-    const GatosApiApi = crearGatosApi(jwt);
+    const GatosApi = crearGatosApi(jwt);
     const toast = useRef<Toast>(null);
     const methods = useForm({
         mode: 'onTouched',
@@ -59,7 +59,7 @@ export const CrearNuevoGato = () => {
         const gatoId = uuidv4();
         console.log(Object.keys(errors).length);
         if (Object.keys(errors).length == 0) {
-            GatosApiApi.apiGatosGatoIdPost(gatoId, values).then((response) => {
+            GatosApi.apiGatosGatoIdPost(gatoId, values).then((response) => {
                 console.log(response);
                 setVisible(false)
                 reset();

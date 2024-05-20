@@ -61,7 +61,7 @@ export const ImagenGato = () => {
     };
 
     return (
-        <article className='flex flex-col items-center'>
+        <article className='flex flex-col items-center self-start mt-5'>
             <Toast ref={toast} />
             <Image src={imagen} width="200" alt="profile-picture" className="mb-5 rounded-md" preview />
             <FileUpload
