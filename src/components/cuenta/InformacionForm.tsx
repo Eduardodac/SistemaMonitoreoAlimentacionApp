@@ -60,8 +60,6 @@ export const InformacionForm = () => {
         });
     }
 
-
-
     return (
         <article className="border-2 w-full m-auto mt-5 max-w-175">
             <Toast ref={toast} />

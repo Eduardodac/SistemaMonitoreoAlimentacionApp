@@ -9,17 +9,17 @@ export const ObtenerMensajeErrorGato: (error: any, mensajeDefecto:string) => str
     // var septimoNivel: string[];
 
     var primerNivel: string[] = Object.keys(error);
-    console.log("1", primerNivel);
+    //console.log("1", primerNivel);
     if (!primerNivel.includes('response')) {
         return mensaje;
     }
     var segundoNivel: string[] = Object.keys(error.response);
-    console.log("2", segundoNivel);
+    //console.log("2", segundoNivel);
     if (!segundoNivel.includes('data')) {
         return mensaje;
     }
     var tercerNivel: string[] = Object.keys(error.response.data);
-    console.log("3", tercerNivel);
+    //console.log("3", tercerNivel);
     if (!segundoNivel.includes('data')) {
         return mensaje;
     }

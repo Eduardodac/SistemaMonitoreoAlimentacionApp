@@ -18,22 +18,18 @@ export const ClavesForm = () => {
         defaultValues: defaultValues,
     });
 
-    const { handleSubmit, setValue } = methods;
+    const { setValue } = methods;
 
     const ActualizarValores = (valores: IClavesForm) => {
         setValue('userName', valores.userName);
         setValue('email', valores.email);
     }
 
-    const onSubmit = () => {
-
-    }
-
     return (
         <article className="border-2 p-5 w-full m-auto max-w-175">
             <FormProvider {...methods}>
                 <section className="text-base mb-5 font-bold text-paletaIpn-guinda">Información de Cuenta</section>
-                <form onSubmit={handleSubmit(onSubmit)} className=" flex flex-row justify-center">
+                <form  className=" flex flex-row justify-center">
                     <section className=" flex flex-row justify-center">
                         <div className="w-2/5 mr-10">
                             <InputTextCustom name="userName" id="userName" label="Username" className="w-full" disabled={true} />
