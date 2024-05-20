@@ -141,13 +141,13 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/CollarCreacionDto"
+              "$ref": "#/components/schemas/CollarEntidadDto"
           text/json:
             schema:
-              "$ref": "#/components/schemas/CollarCreacionDto"
+              "$ref": "#/components/schemas/CollarEntidadDto"
           application/*+json:
             schema:
-              "$ref": "#/components/schemas/CollarCreacionDto"
+              "$ref": "#/components/schemas/CollarEntidadDto"
       responses:
         '200':
           description: Success
@@ -854,13 +854,17 @@ components:
         gato:
           "$ref": "#/components/schemas/Gato"
       additionalProperties: false
-    CollarCreacionDto:
+    CollarEntidadDto:
       type: object
       properties:
         collarId:
           type: string
           format: uuid
         fechaSalida:
+          type: string
+          format: date-time
+          nullable: true
+        fechaActivacion:
           type: string
           format: date-time
           nullable: true
@@ -980,11 +984,16 @@ components:
           "$ref": "#/components/schemas/Collar"
       additionalProperties: false
     GatoEntidadDto:
+      required:
+      - nombre
       type: object
       properties:
+        gatoId:
+          type: string
+          format: uuid
+          nullable: true
         nombre:
           type: string
-          nullable: true
         raza:
           type: string
           nullable: true
@@ -994,6 +1003,11 @@ components:
         edad:
           type: integer
           format: int32
+        imagenGato:
+          type: string
+          nullable: true
+        collar:
+          "$ref": "#/components/schemas/CollarEntidadDto"
       additionalProperties: false
     GetUsuario:
       type: object

@@ -18,7 +18,12 @@ export const ImagenCuenta = () => {
     const toast = useRef<Toast>(null);
 
     useEffect(() => {
-        setImagen(userData.imagenCuenta.imagenUsuario);
+        if(userData.imagenCuenta.imagenUsuario != "")
+            {
+                setImagen(userData.imagenCuenta.imagenUsuario);
+            }else{
+                setImagen(avatar);
+            }
     }, [userData.imagenCuenta])
 
 

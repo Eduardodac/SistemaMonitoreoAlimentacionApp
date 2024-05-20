@@ -173,31 +173,37 @@ export interface Collar {
 /**
  * 
  * @export
- * @interface CollarCreacionDto
+ * @interface CollarEntidadDto
  */
-export interface CollarCreacionDto {
+export interface CollarEntidadDto {
     /**
      * 
      * @type {string}
-     * @memberof CollarCreacionDto
+     * @memberof CollarEntidadDto
      */
     'collarId'?: string;
     /**
      * 
      * @type {string}
-     * @memberof CollarCreacionDto
+     * @memberof CollarEntidadDto
      */
     'fechaSalida'?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof CollarCreacionDto
+     * @memberof CollarEntidadDto
+     */
+    'fechaActivacion'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CollarEntidadDto
      */
     'numeroRegistro'?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof CollarCreacionDto
+     * @memberof CollarEntidadDto
      */
     'estatusActivacion'?: boolean;
 }
@@ -404,7 +410,13 @@ export interface GatoEntidadDto {
      * @type {string}
      * @memberof GatoEntidadDto
      */
-    'nombre'?: string | null;
+    'gatoId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GatoEntidadDto
+     */
+    'nombre': string;
     /**
      * 
      * @type {string}
@@ -423,6 +435,18 @@ export interface GatoEntidadDto {
      * @memberof GatoEntidadDto
      */
     'edad'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GatoEntidadDto
+     */
+    'imagenGato'?: string | null;
+    /**
+     * 
+     * @type {CollarEntidadDto}
+     * @memberof GatoEntidadDto
+     */
+    'collar'?: CollarEntidadDto;
 }
 /**
  * 
@@ -1541,11 +1565,11 @@ export const CollaresApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @param {CollarCreacionDto} [collarCreacionDto] 
+         * @param {CollarEntidadDto} [collarEntidadDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiCollaresPost: async (collarCreacionDto?: CollarCreacionDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiCollaresPost: async (collarEntidadDto?: CollarEntidadDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/Collares`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1568,7 +1592,7 @@ export const CollaresApiAxiosParamCreator = function (configuration?: Configurat
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(collarCreacionDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(collarEntidadDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1606,12 +1630,12 @@ export const CollaresApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {CollarCreacionDto} [collarCreacionDto] 
+         * @param {CollarEntidadDto} [collarEntidadDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiCollaresPost(collarCreacionDto?: CollarCreacionDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiCollaresPost(collarCreacionDto, options);
+        async apiCollaresPost(collarEntidadDto?: CollarEntidadDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiCollaresPost(collarEntidadDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1643,12 +1667,12 @@ export const CollaresApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * @param {CollarCreacionDto} [collarCreacionDto] 
+         * @param {CollarEntidadDto} [collarEntidadDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiCollaresPost(collarCreacionDto?: CollarCreacionDto, options?: any): AxiosPromise<void> {
-            return localVarFp.apiCollaresPost(collarCreacionDto, options).then((request) => request(axios, basePath));
+        apiCollaresPost(collarEntidadDto?: CollarEntidadDto, options?: any): AxiosPromise<void> {
+            return localVarFp.apiCollaresPost(collarEntidadDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1683,13 +1707,13 @@ export class CollaresApi extends BaseAPI {
 
     /**
      * 
-     * @param {CollarCreacionDto} [collarCreacionDto] 
+     * @param {CollarEntidadDto} [collarEntidadDto] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollaresApi
      */
-    public apiCollaresPost(collarCreacionDto?: CollarCreacionDto, options?: AxiosRequestConfig) {
-        return CollaresApiFp(this.configuration).apiCollaresPost(collarCreacionDto, options).then((request) => request(this.axios, this.basePath));
+    public apiCollaresPost(collarEntidadDto?: CollarEntidadDto, options?: AxiosRequestConfig) {
+        return CollaresApiFp(this.configuration).apiCollaresPost(collarEntidadDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

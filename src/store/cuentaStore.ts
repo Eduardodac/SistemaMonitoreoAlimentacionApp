@@ -28,7 +28,6 @@ interface UserStore {
   setUserData: (data: Partial<IUserData>) => void;
 }
 
-// Crear el store
 const useUserStore = create<UserStore>((set) => ({
   userData: {
     imagenCuenta:{
