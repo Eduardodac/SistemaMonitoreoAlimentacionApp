@@ -41,10 +41,12 @@ export const Perfil = () => {
     }, [])
 
     return (
-        <article className='pb-10'>
+        <article className='flex justify-around items-center max-w-200 m-auto'>
             <ImagenCuenta />
-            <ClavesForm />
-            <InformacionForm />
+            <div className='flex flex-col h-fit'>
+                <ClavesForm />
+                <InformacionForm />
+            </div>
         </article>
     )
 }

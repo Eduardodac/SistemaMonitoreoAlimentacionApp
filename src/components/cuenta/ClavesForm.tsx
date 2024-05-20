@@ -30,9 +30,9 @@ export const ClavesForm = () => {
     }
 
     return (
-        <article className="my-5 border-2 border-paletaIpn-guinda w-3/4 m-auto max-w-175">
+        <article className="border-2 p-5 w-full m-auto max-w-175">
             <FormProvider {...methods}>
-                <section className="text-base p-5 font-bold text-paletaIpn-guinda">Información de Cuenta</section>
+                <section className="text-base mb-5 font-bold text-paletaIpn-guinda">Información de Cuenta</section>
                 <form onSubmit={handleSubmit(onSubmit)} className=" flex flex-row justify-center">
                     <section className=" flex flex-row justify-center">
                         <div className="w-2/5 mr-10">

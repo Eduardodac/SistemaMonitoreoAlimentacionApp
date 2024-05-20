@@ -63,7 +63,7 @@ export const InformacionForm = () => {
 
 
     return (
-        <article className="my-5 border-2 border-paletaIpn-guinda w-3/4 m-auto max-w-175">
+        <article className="border-2 w-full m-auto mt-5 max-w-175">
             <Toast ref={toast} />
             <FormProvider {...methods}>
                 <section className="text-base p-5 font-bold text-paletaIpn-guinda">Información de Perfil</section>
