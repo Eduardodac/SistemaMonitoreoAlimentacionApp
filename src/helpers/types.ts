@@ -1,3 +1,5 @@
+import { DateTime } from "luxon"
+
 export type LoginType = 
 {
     UserName : string,
@@ -17,8 +19,8 @@ export type ListaGatosType={
 //Collares
 export type CollarType = {
     collarId: string,
-    fechaSalida: Date,
-    FechaActivacion?: Date | null,
-    NumeroRegistro: string,
-    EstatusActivacion: boolean
+    fechaSalida: DateTime,
+    fechaActivacion?: DateTime | null,
+    numeroRegistro: string,
+    estatusActivacion: boolean
 }

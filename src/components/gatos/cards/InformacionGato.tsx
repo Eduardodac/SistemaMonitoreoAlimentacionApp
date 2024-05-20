@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "primereact/button";
 import { useEffect, useState } from "react";
 import { ListaGatosType } from "../../../helpers/types";
+import { DateTime } from "luxon";
 
 type CardGatoProps = {
     datos: ListaGatosType | null
@@ -10,27 +11,29 @@ type CardGatoProps = {
 export const InformacionGato = ({ datos }: CardGatoProps) => {
     const [hover, setHover] = useState(false);
     const [collarInfo, setCollarInfo] = useState({
-        FechaActivacion: "",
-        NumeroRegistro: "",
-        EstatusActivacion: ""
+        fechaActivacion: "",
+        numeroRegistro: "",
+        estatusActivacion: ""
     });
 
     useEffect(()=>{
         let active = true;
         if(active){
-            const Nregistro = datos?.collar?.NumeroRegistro != null? datos?.collar?.NumeroRegistro: "Sin asignar";
-            const FActivacion = datos?.collar?.FechaActivacion != null? datos?.collar?.FechaActivacion.toString() : "Sin Fecha";
+            const Nregistro = datos?.collar?.numeroRegistro != null? datos?.collar?.numeroRegistro: "Sin asignar";
+            const fechaISO = datos?.collar?.fechaActivacion != null? datos?.collar?.fechaActivacion.toString() : DateTime.now().toLocaleString();
+            const FActivacion = DateTime.fromISO(fechaISO).toFormat('DD');
             setCollarInfo({
-                FechaActivacion: FActivacion,
-                NumeroRegistro: Nregistro,
-                EstatusActivacion: datos?.collar?.FechaActivacion? "Activo": "Inactivo"
+                fechaActivacion: datos?.collar?.fechaActivacion != null? FActivacion.toString(): "Sin Fecha",
+                numeroRegistro: Nregistro,
+                estatusActivacion: datos?.collar?.estatusActivacion? "Activo": "Inactivo"
             })
         }
 
         return () => {
             active = false;
         };
-    },[datos?.collar])
+    },[datos])
+
     return (
         <article className="flex flex-col h-full justify-center relative" onMouseEnter={() => { setHover(true) }} onMouseLeave={() => { setHover(false) }}>
             <div className={`pl-10 my-auto ${hover ? '' : 'visible'}`}>
@@ -68,11 +71,11 @@ export const InformacionGato = ({ datos }: CardGatoProps) => {
                     <div className="w-11/12">
                         <section className="grid grid-cols-2 text-base font-semibold text-fondoCards bg-fondo p-2 rounded-lg">
                             <div className="space-y-2 flex flex-col">
-                                <span>Registro: <span className="font-extrabold text-paletaIpn-guinda">{collarInfo.NumeroRegistro}</span></span>
-                                <span>Estatus: <span className="font-extrabold text-paletaIpn-guinda">{collarInfo.EstatusActivacion}</span></span>
+                                <span>Registro: <span className="font-extrabold text-paletaIpn-guinda">{collarInfo.numeroRegistro}</span></span>
+                                <span>Estatus: <span className="font-extrabold text-paletaIpn-guinda">{collarInfo.estatusActivacion}</span></span>
                             </div>
                             <div className="space-y-2 flex flex-col">
-                                <span>F. Activacion: <span className="font-extrabold text-paletaIpn-guinda">{collarInfo.FechaActivacion}</span></span>
+                                <span>F. Activacion: <span className="font-extrabold text-paletaIpn-guinda">{collarInfo.fechaActivacion}</span></span>
 
                             </div>
                         </section>
