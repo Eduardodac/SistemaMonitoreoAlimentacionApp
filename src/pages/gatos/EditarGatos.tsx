@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
 import { crearGatosApi } from "../../services/httpclient";
+import { motion } from "framer-motion";
 
 export const EditarGatos = () => {
     const { jwt } = useAuthStore();
@@ -9,10 +10,10 @@ export const EditarGatos = () => {
     const { gatoId } = useParams();
     const [loading, setLoading] = useState(false);
 
-    useEffect(()=>{
+    useEffect(() => {
         let active = true;
-        if (active && gatoId !=null) {
-            GatosAPI.apiGatosGatoIdGet(gatoId).then((response:any) => {
+        if (active && gatoId != null) {
+            GatosAPI.apiGatosGatoIdGet(gatoId).then((response: any) => {
                 console.log(response)
             }).catch(() => {
                 console.log("gatos, error en llamada de datos gatoId")
@@ -21,9 +22,18 @@ export const EditarGatos = () => {
         return () => {
             active = false;
         };
-    },[])
+    }, [])
 
-  return (
-    <div>Aquí se editarán los gatos</div>
-  )
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{
+                x: 0,
+                y: 0,
+                scale: 1,
+                opacity: 1
+            }}
+            transition={{ duration: 0.75 }}
+        ></motion.div>
+    )
 }
