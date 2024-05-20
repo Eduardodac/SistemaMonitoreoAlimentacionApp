@@ -32,11 +32,9 @@ export const Gatos = () => {
         };
     }, [])
 
-    useEffect(() => {
-        console.log(listaGatos)
-    }, [listaGatos])
-
-
+    // useEffect(() => {
+    //     console.log(listaGatos)
+    // }, [listaGatos])
     return (
         <motion.div
             initial={{ opacity: 0, y: 50 }}

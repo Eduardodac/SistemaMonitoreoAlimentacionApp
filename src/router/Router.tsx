@@ -34,8 +34,8 @@ export const Router = () => {
                     <Route path = "avisos" element={<Avisos/>}/>
                     <Route path = "avisos/configuracion" element={<Configuracion/>}/>
 
-                    <Route index element={<Navigate to = "/home" replace/>}/>
-                    <Route path = "*" element={<Navigate to = "/home" replace/>}/>
+                    {/* <Route index element={<Navigate to = "/home" replace/>}/>
+                    <Route path = "*" element={<Navigate to = "/home" replace/>}/> */}
                 </Route>
             </Routes>
         </BrowserRouter>

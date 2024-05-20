@@ -8,6 +8,7 @@ export type LoginType =
 
 //gatos
 export type ListaGatosType={
+    gatoId: string,
     nombre: string,
     raza?: string | null,
     sexo?: string | null,

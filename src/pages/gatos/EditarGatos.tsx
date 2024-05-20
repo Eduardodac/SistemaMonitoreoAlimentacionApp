@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
 import { crearGatosApi } from "../../services/httpclient";
@@ -8,7 +8,6 @@ export const EditarGatos = () => {
     const { jwt } = useAuthStore();
     const GatosAPI = crearGatosApi(jwt);
     const { gatoId } = useParams();
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         let active = true;
@@ -34,6 +33,8 @@ export const EditarGatos = () => {
                 opacity: 1
             }}
             transition={{ duration: 0.75 }}
-        ></motion.div>
+        >
+            
+        </motion.div>
     )
 }

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "primereact/button";
 import { useEffect, useState } from "react";
 import { ListaGatosType } from "../../../helpers/types";
+import { useNavigate } from "react-router-dom";
 import { DateTime } from "luxon";
 
 type CardGatoProps = {
@@ -10,6 +11,7 @@ type CardGatoProps = {
 
 export const InformacionGato = ({ datos }: CardGatoProps) => {
     const [hover, setHover] = useState(false);
+    const navigate = useNavigate();
     const [collarInfo, setCollarInfo] = useState({
         fechaActivacion: "",
         numeroRegistro: "",
@@ -34,6 +36,12 @@ export const InformacionGato = ({ datos }: CardGatoProps) => {
         };
     },[datos])
 
+    const redireccionar = (id:string | null | undefined) =>{
+        if(id != null){
+            navigate("/gatos/"+id);
+        }
+    }
+
     return (
         <article className="flex flex-col h-full justify-center relative" onMouseEnter={() => { setHover(true) }} onMouseLeave={() => { setHover(false) }}>
             <div className={`pl-10 my-auto ${hover ? '' : 'visible'}`}>
@@ -51,7 +59,7 @@ export const InformacionGato = ({ datos }: CardGatoProps) => {
                     </section>
 
                     <div className="flex justify-end">
-                        <Button label="Editar" icon='pi pi-pencil' className={'mt-1 text-sm '} />
+                        <Button label="Editar" icon='pi pi-pencil' className={'mt-1 text-sm '} onClick={()=>{redireccionar(datos?.gatoId)}}/>
                     </div>
                 </div>
             </div>
@@ -80,7 +88,7 @@ export const InformacionGato = ({ datos }: CardGatoProps) => {
                             </div>
                         </section>
                         <div className="flex justify-end pb-5">
-                            <Button label="Editar" icon='pi pi-pencil' className={`mt-1 text-sm ${hover ? "visible" : "hidden"}`} />
+                            <Button label="Editar" icon='pi pi-pencil' className={`mt-1 text-sm ${hover ? "visible" : "hidden"}`} onClick={()=>{redireccionar(datos?.gatoId)}} />
                         </div>
                     </div>
                 </motion.div>
