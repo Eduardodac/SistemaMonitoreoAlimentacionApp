@@ -85,11 +85,11 @@ export const InfoGatoForm = () => {
     }
 
     return (
-        <article className="border-2 w-full m-auto mt-5 max-w-175">
+        <article className="border-2 w-full m-auto max-w-175 min-w-175 h-96">
             <Toast ref={toast} />
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(onSubmit)} className=" flex flex-col">
-                    <section className="text-base p-5 font-bold text-paletaIpn-guinda">Información de Gato</section>
+                    <section className="text-lg p-5 font-bold text-paletaIpn-guinda">Información de Gato</section>
                     <article className="mt-5 space-y-5">
                         <section className="flex flex-row justify-center m-auto ">
                             <div className="w-2/5 mr-10">

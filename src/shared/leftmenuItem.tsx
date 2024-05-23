@@ -1,7 +1,6 @@
 import catIcon from "../assets/catIcon.png"
 import chart from "../assets/chart.png"
 import user from "../assets/user.png"
-import calendar from "../assets/calendar.png"
 import clock from "../assets/clock.png"
 import bell from "../assets/bell.png"
 import off from "../assets/off.png"
@@ -22,11 +21,6 @@ export const leftMenuItems = [
     {
         template : () => (
             <MenuItemTemplate label = 'Gatos' img= {catIcon}  path = "gatos"/>
-        )
-    },
-    {
-        template : () => (
-            <MenuItemTemplate label = 'Calendarización' img= {calendar} path = "calendario"/>
         )
     },
     {

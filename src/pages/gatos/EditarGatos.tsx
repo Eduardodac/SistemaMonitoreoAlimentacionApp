@@ -7,6 +7,7 @@ import { ImagenGato } from '../../components/gatos/editar/ImagenGato';
 import { InfoGatoForm } from "../../components/gatos/editar/InfoGatoForm";
 import { ConectarCollares } from "../../components/gatos/editar/ConectarCollares";
 import useGatoStore, { IGatoData } from "../../store/gatoStore";
+import { TabView, TabPanel } from 'primereact/tabview';
 
 export const EditarGatos = () => {
     const { jwt } = useAuthStore();
@@ -26,7 +27,7 @@ export const EditarGatos = () => {
                         sexo: respuesta.sexo ? respuesta.sexo : "",
                         edad: respuesta.edad ? respuesta.edad : 0,
                     },
-                    imagen:{
+                    imagen: {
                         imagenGato: respuesta.imagenGato ? respuesta.imagenGato : "",
                     },
                     collar: {
@@ -60,10 +61,14 @@ export const EditarGatos = () => {
             transition={{ duration: 0.75 }}
         >
             <ImagenGato />
-            <div className='flex flex-col h-fit'>
-                <InfoGatoForm />
-                <ConectarCollares />
-            </div>
+                <TabView className="m-auto bg-fondo" >
+                    <TabPanel header="Gato" className="bg-fondo">
+                        <InfoGatoForm />
+                    </TabPanel>
+                    <TabPanel header="Collar" className="bg-fondo">
+                        <ConectarCollares />
+                    </TabPanel>
+                </TabView>
         </motion.div>
     )
 }

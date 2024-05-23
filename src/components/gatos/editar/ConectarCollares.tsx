@@ -95,7 +95,7 @@ export const ConectarCollares = () => {
     }
 
     return (
-        <article className="border-2 p-5 w-full m-auto max-w-175 min-w-175">
+        <article className="border-2 p-5 w-full m-auto max-w-175 min-w-175 h-96">
             <Toast ref={toast} />
             <section className="text-base mb-5">
                 <section className="text-lg mb-5 font-bold text-paletaIpn-guinda">Información de Collar</section>

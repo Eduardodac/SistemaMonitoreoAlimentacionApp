@@ -20,6 +20,7 @@ export const ImagenGato = () => {
     const toast = useRef<Toast>(null);
 
     useEffect(() => {
+        
         if (gatoData.imagen.imagenGato != "") {
             setImagen(gatoData.imagen.imagenGato);
         } else {
@@ -31,11 +32,13 @@ export const ImagenGato = () => {
     const uploadImage = (e: FileUploadHandlerEvent) => {
         if (gatoId != null) {
             GatosApi.apiGatosImagenGatoIdPut(gatoId, e.files[0]).then((response:any) => {
+                console.log(response);
                 setGatoData({
                     imagen: {
                         imagenGato: response.data
                     }
                 })
+                setImagen(response.data);
                 showSuccess("Carga de imagen exitoso");
             }).catch(error => {
                 try {
@@ -61,7 +64,7 @@ export const ImagenGato = () => {
     };
 
     return (
-        <article className='flex flex-col items-center self-start mt-5'>
+        <article className='flex flex-col items-center self-center mt-5'>
             <Toast ref={toast} />
             <Image src={imagen} width="200" alt="profile-picture" className="mb-5 rounded-md" preview />
             <FileUpload
