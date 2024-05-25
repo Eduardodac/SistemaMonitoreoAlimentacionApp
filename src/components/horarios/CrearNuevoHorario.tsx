@@ -12,6 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { crearHorariosApi } from "../../services/httpclient";
 import { useAuthStore } from "../../store/authStore";
 import { ObtenerMensajeErrorGato } from "../../helpers/manejoErrores";
+import { IHorarioDate } from "./Horario";
 
 
 type DefaultType = {
@@ -24,10 +25,11 @@ const defaultValues: DefaultType = {
 
 type crearHorarioProp={
     dia: string,
-    diaId: number | undefined
+    diaId: number | undefined,
+    agregarHora: (hora:IHorarioDate)=>void
 }
 
-export const CrearNuevoHorario = ({dia, diaId}: crearHorarioProp) => {
+export const CrearNuevoHorario = ({dia, diaId, agregarHora}: crearHorarioProp) => {
     const [visible, setVisible] = useState<boolean>(false);
     const { jwt } = useAuthStore();
     const HorariosAPi = crearHorariosApi(jwt);
@@ -65,12 +67,18 @@ export const CrearNuevoHorario = ({dia, diaId}: crearHorarioProp) => {
             hora: hora
         }
 
+        const valorAAgregar = {
+            horarioId: uuidv4(),
+            hora: new Date (hora)
+        }
+
         if (Object.keys(errors).length == 0) {
             HorariosAPi.apiHorariosPost(values).then((response) => {
                 console.log(response);
                 setVisible(false)
                 reset();
                 showSuccess("Creación exitosa");
+                agregarHora(valorAAgregar);
             }).catch((error) => {
                 console.log(error)
                 showError(ObtenerMensajeErrorGato(error, "Error al crear el horario"));
@@ -102,10 +110,10 @@ export const CrearNuevoHorario = ({dia, diaId}: crearHorarioProp) => {
 
     return (
 
-        <article className="mt-16 w-full ">
+        <article className="mt-2 w-full ">
             <Toast ref={toast} />
             <motion.div
-                className="h-10 rounded-xl bg-paletaIpn-rojo w-48 p-3 m-auto flex flex-row items-center card-cats cursor-pointer"
+                className="h-10 rounded-xl bg-paletaIpn-guinda w-48 p-3 mx-auto flex flex-row items-center card-hour cursor-pointer"
                 onClick={visibleForm}
                 initial={false}
                 whileHover={{ scale: 1.05 }}
@@ -117,9 +125,9 @@ export const CrearNuevoHorario = ({dia, diaId}: crearHorarioProp) => {
 
                 <div className="ml-3 text-base font-extrabold text-fondo ">Nuevo Horario</div>
             </motion.div>
-            <Dialog header={headerContent} visible={visible} position={'center'} style={{ width: '40vw' }} onHide={() => setVisible(false)} footer={footerContent} draggable={false} resizable={false}>
+            <Dialog header={headerContent} visible={visible} position={'center'} style={{ width: '30vw' }} onHide={() => setVisible(false)} footer={footerContent} draggable={false} resizable={false}>
                 <FormProvider {...methods}>
-                    <article className="mt-5 space-y-5">
+                    <article className="mt-5">
                         <section className="flex flex-row justify-center m-auto ">
                             <div className="w-2/5">
                                 <CalendarTimeCustom name="hora" id="hora" label="Horario" className="w-full" />

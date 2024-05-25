@@ -27,6 +27,18 @@ module.exports = {
           rosa: "#F2DCEB",
           blanco: "#F2F2F2"
         },
+        paletaGatos: {
+            aquamarine: "#42E2B8",
+            dutchWhite: "#F3DFBF",
+            LigthCoral: "#EB8A90",
+            Caribbean: "#0F7173"
+        },
+        paletaHours: {
+            aquamarine: "#42E2B8",
+            dutchWhite: "#F3DFBF",
+            LigthCoral: "#EB8A90",
+            Caribbean: "#0F7173"
+        },
         fondoCards: "#09b498",
         fondo:"#FBFEF9",
         darkFondo: "#f0f0c959"
