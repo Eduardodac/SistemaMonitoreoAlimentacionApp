@@ -1,4 +1,4 @@
-import { CuentasApi, GatosApi } from "../openAPI";
+import { CuentasApi, DiasdelaSemanaApi, GatosApi, HorariosApi } from "../openAPI";
 import { Configuration } from "../openAPI/configuration";
 
 const createApiConfig =((token:string | null)=>{
@@ -20,5 +20,14 @@ export const crearCuentasApi = ((token:string | null)=>{
 export const crearGatosApi = ((token:string | null)=>{
     return new GatosApi(createApiConfig(token));
 })
+
+export const crearHorariosApi = ((token:string | null)=>{
+    return new HorariosApi(createApiConfig(token));
+})
+
+export const crearDiadelaSemanaApi = ((token:string | null)=>{
+    return new DiasdelaSemanaApi(createApiConfig(token));
+})
+
 
 
