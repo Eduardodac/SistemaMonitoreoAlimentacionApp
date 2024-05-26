@@ -721,6 +721,19 @@ paths:
       responses:
         '200':
           description: Success
+    delete:
+      tags:
+      - Horarios
+      parameters:
+      - name: horarioId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Success
   "/api/Registros/{collarId}":
     get:
       tags:
@@ -1077,10 +1090,6 @@ components:
     HorarioModificarDto:
       type: object
       properties:
-        diaDeLaSemanaId:
-          type: integer
-          format: int32
-          nullable: true
         hora:
           type: string
           format: date-time

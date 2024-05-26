@@ -573,12 +573,6 @@ export interface HorarioEntidadDto {
 export interface HorarioModificarDto {
     /**
      * 
-     * @type {number}
-     * @memberof HorarioModificarDto
-     */
-    'diaDeLaSemanaId'?: number | null;
-    /**
-     * 
      * @type {string}
      * @memberof HorarioModificarDto
      */
@@ -3248,6 +3242,42 @@ export const HorariosApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @param {string} horarioId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiHorariosHorarioIdDelete: async (horarioId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'horarioId' is not null or undefined
+            assertParamExists('apiHorariosHorarioIdDelete', 'horarioId', horarioId)
+            const localVarPath = `/api/Horarios/{horarioId}`
+                .replace(`{${"horarioId"}}`, encodeURIComponent(String(horarioId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} horarioId 
          * @param {HorarioModificarDto} [horarioModificarDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3343,6 +3373,16 @@ export const HorariosApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} horarioId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiHorariosHorarioIdDelete(horarioId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiHorariosHorarioIdDelete(horarioId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} horarioId 
          * @param {HorarioModificarDto} [horarioModificarDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3382,6 +3422,15 @@ export const HorariosApiFactory = function (configuration?: Configuration, baseP
         /**
          * 
          * @param {string} horarioId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiHorariosHorarioIdDelete(horarioId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.apiHorariosHorarioIdDelete(horarioId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} horarioId 
          * @param {HorarioModificarDto} [horarioModificarDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3416,6 +3465,17 @@ export class HorariosApi extends BaseAPI {
      */
     public apiHorariosGet(options?: AxiosRequestConfig) {
         return HorariosApiFp(this.configuration).apiHorariosGet(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} horarioId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HorariosApi
+     */
+    public apiHorariosHorarioIdDelete(horarioId: string, options?: AxiosRequestConfig) {
+        return HorariosApiFp(this.configuration).apiHorariosHorarioIdDelete(horarioId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
