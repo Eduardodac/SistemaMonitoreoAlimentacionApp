@@ -1,10 +1,13 @@
 import { motion } from "framer-motion"
-import { useState } from "react";
 import { variantsEliminar } from "../../../helpers/variantsHorarios";
 
+type EliminarBotonType = {
+    hoverEliminar:boolean,
+    switchHoverEliminar: ()=>void
+}
 
-export const EliminarHorario = () => {
-    const [hoverEliminar, setHoverEliminar] = useState(false);
+export const EliminarHorarioBoton = ({hoverEliminar, switchHoverEliminar}: EliminarBotonType) => {
+      
   return (
     <motion.nav
     initial={false}
@@ -24,7 +27,7 @@ export const EliminarHorario = () => {
             whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            onClick={() => { setHoverEliminar(!hoverEliminar) }}
+            onClick={switchHoverEliminar}
         >
         </motion.span>
     </motion.div>

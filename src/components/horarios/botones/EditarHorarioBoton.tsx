@@ -1,10 +1,13 @@
 import { motion } from "framer-motion"
-import { useState } from "react";
 import { variantsEditar } from "../../../helpers/variantsHorarios";
 
+type EditarBotonType = {
+    hoverEditar:boolean,
+    switchHoverEditar: ()=>void
+}
 
-export const EditarHorarioBoton = () => {
-    const [hoverEditar, setHoverEditar] = useState(false);
+export const EditarHorarioBoton = ({hoverEditar, switchHoverEditar}:EditarBotonType) => {
+
     return (
 
         <motion.nav
@@ -33,7 +36,7 @@ export const EditarHorarioBoton = () => {
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    onClick={() => { setHoverEditar(!hoverEditar) }}
+                    onClick={switchHoverEditar}
                 >
                 </motion.span>
             </motion.div>
