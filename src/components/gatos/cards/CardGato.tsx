@@ -22,7 +22,7 @@ export const CardGato = ({ datos }: CardGatoProps) => {
     }, [datos])
     return (
         <article className="w-11/12 max-w-200 flex flex-row items-center card-cats rounded-md h-52 mx-auto">
-            <section className="w-2/5 h-full bg-fondoCards flex justify-center rounded-l-md">
+            <section className="w-2/5 h-full bg-paletaGatos-Caribbean flex justify-center rounded-l-md">
                 <img src={image} alt="cat-picture" width="200" className="rounded-full" />
             </section>
             <section className="w-3/4 h-full">

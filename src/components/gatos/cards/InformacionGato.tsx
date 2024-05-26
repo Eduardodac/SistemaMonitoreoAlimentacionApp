@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Button } from "primereact/button";
 import { useEffect, useState } from "react";
 import { ListaGatosType } from "../../../helpers/types";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +6,26 @@ import { DateTime } from "luxon";
 
 type CardGatoProps = {
     datos: ListaGatosType | null
+}
+
+const variants = {
+    open: (height = 200) => ({
+        clipPath: `circle(${height * 2 + 200}px at 100px 100px)`,
+        transition: {
+            type: "spring",
+            stiffness: 20,
+            restDelta: 2,
+        }
+    }),
+    closed: {
+        clipPath: "circle(0px at -100px 100px)",
+        transition: {
+            delay: 0.3,
+            type: "spring",
+            stiffness: 75,
+            damping: 40
+        }
+    }
 }
 
 export const InformacionGato = ({ datos }: CardGatoProps) => {
@@ -18,27 +37,27 @@ export const InformacionGato = ({ datos }: CardGatoProps) => {
         estatusActivacion: ""
     });
 
-    useEffect(()=>{
+    useEffect(() => {
         let active = true;
-        if(active){
-            const Nregistro = datos?.collar?.numeroRegistro != null? datos?.collar?.numeroRegistro: "Sin asignar";
-            const fechaISO = datos?.collar?.fechaActivacion != null? datos?.collar?.fechaActivacion.toString() : DateTime.now().toLocaleString();
+        if (active) {
+            const Nregistro = datos?.collar?.numeroRegistro != null ? datos?.collar?.numeroRegistro : "Sin asignar";
+            const fechaISO = datos?.collar?.fechaActivacion != null ? datos?.collar?.fechaActivacion.toString() : DateTime.now().toLocaleString();
             const FActivacion = DateTime.fromISO(fechaISO).toFormat('DD');
             setCollarInfo({
-                fechaActivacion: datos?.collar?.fechaActivacion != null? FActivacion.toString(): "Sin Fecha",
+                fechaActivacion: datos?.collar?.fechaActivacion != null ? FActivacion.toString() : "Sin Fecha",
                 numeroRegistro: Nregistro,
-                estatusActivacion: datos?.collar?.estatusActivacion? "Activo": "Inactivo"
+                estatusActivacion: datos?.collar?.estatusActivacion ? "Activo" : "Inactivo"
             })
         }
 
         return () => {
             active = false;
         };
-    },[datos])
+    }, [datos])
 
-    const redireccionar = (id:string | null | undefined) =>{
-        if(id != null){
-            navigate("/gatos/"+id);
+    const redireccionar = (id: string | null | undefined) => {
+        if (id != null) {
+            navigate("/gatos/" + id);
         }
     }
 
@@ -47,49 +66,72 @@ export const InformacionGato = ({ datos }: CardGatoProps) => {
             <div className={`pl-10 my-auto ${hover ? '' : 'visible'}`}>
                 <section className="text-xl font-bold text-paletaIpn-guinda mb-3">Ficha Informativa</section>
                 <div className="w-11/12">
-                    <section className="grid grid-cols-2 text-base font-semibold text-fondo bg-fondoCards p-2 rounded-lg">
+                    <section className="grid grid-cols-2 text-base font-semibold text-fondo bg-paletaGatos-Caribbean p-2 rounded-lg">
                         <div className="space-y-2 flex flex-col">
-                            <span>Nombre: <span className="font-extrabold text-paletaIpn-guinda">{datos?.nombre}</span></span>
-                            <span>Raza: <span className="font-extrabold text-paletaIpn-guinda">{datos?.raza}</span></span>
+                            <span>Nombre: <span className="font-extrabold text-paletaGatos-dutchWhite">{datos?.nombre}</span></span>
+                            <span>Raza: <span className="font-extrabold text-paletaGatos-dutchWhite">{datos?.raza}</span></span>
                         </div>
                         <div className="space-y-2 flex flex-col">
-                            <span>Sexo: <span className="font-extrabold text-paletaIpn-guinda">{datos?.sexo}</span></span>
-                            <span>Edad: <span className="font-extrabold text-paletaIpn-guinda">{datos?.edad}</span></span>
+                            <span>Sexo: <span className="font-extrabold text-paletaGatos-dutchWhite">{datos?.sexo}</span></span>
+                            <span>Edad: <span className="font-extrabold text-paletaGatos-dutchWhite">{datos?.edad}</span></span>
                         </div>
                     </section>
 
-                    <div className="flex justify-end">
-                        <Button label="Editar" icon='pi pi-pencil' className={'mt-1 text-sm '} onClick={()=>{redireccionar(datos?.gatoId)}}/>
+                    <div className="flex justify-end mt-1.5">
+                        <motion.div
+                            className="rounded-lg h-12 bg-paletaGatos-Caribbean w-fit p-3 flex flex-row items-center justify-end cursor-pointer"
+                            onClick={() => { redireccionar(datos?.gatoId) }}
+                            initial={false}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <span className="pi pi-pencil text-fondo"></span>
+
+                            <div className="ml-3 text-sm font-extrabold text-fondo ">Editar</div>
+                        </motion.div>
                     </div>
+
                 </div>
             </div>
             <motion.div
-                className="h-full bg-fondoCards absolute"
-                initial={false}
-                animate={{ width: hover ? '100%' : '0%' }}
-                transition={{ duration: 1 }}
+                className="h-full bg-paletaGatos-Caribbean absolute w-full"
+                animate={hover ? "open" : "closed"}
+                variants={variants}
             >
                 <motion.div
-                    className="pl-10 my-auto mt-4"
+                    className="pl-10 my-auto mt-5"
                     initial={false}
-                    animate={{ opacity: hover ? 1 : 0 }}
-                    transition={{ delay: 0.3, duration: 0.7 }}
+                    animate={{ opacity: hover ? 1 : 1 }}
+                    transition={{ delay: 0.25, duration: 0.7 }}
                 >
-                    <section className="text-xl font-bold text-paletaIpn-guinda mb-3">Información de Collar</section>
+                    <section className="text-xl font-bold text-fondo mb-3">Información de Collar</section>
                     <div className="w-11/12">
                         <section className="grid grid-cols-2 text-base font-semibold text-fondoCards bg-fondo p-2 rounded-lg">
                             <div className="space-y-2 flex flex-col">
-                                <span>Registro: <span className="font-extrabold text-paletaIpn-guinda">{collarInfo.numeroRegistro}</span></span>
-                                <span>Estatus: <span className="font-extrabold text-paletaIpn-guinda">{collarInfo.estatusActivacion}</span></span>
+                                <span>Registro: <span className="font-extrabold text-paletaGatos-Caribbean">{collarInfo.numeroRegistro}</span></span>
+                                <span>Estatus: <span className="font-extrabold text-paletaGatos-Caribbean">{collarInfo.estatusActivacion}</span></span>
                             </div>
                             <div className="space-y-2 flex flex-col">
-                                <span>F. Activacion: <span className="font-extrabold text-paletaIpn-guinda">{collarInfo.fechaActivacion}</span></span>
+                                <span>F. Activacion: <span className="font-extrabold text-paletaGatos-Caribbean">{collarInfo.fechaActivacion}</span></span>
 
                             </div>
                         </section>
-                        <div className="flex justify-end pb-5">
-                            <Button label="Editar" icon='pi pi-pencil' className={`mt-1 text-sm ${hover ? "visible" : "hidden"}`} onClick={()=>{redireccionar(datos?.gatoId)}} />
-                        </div>
+                        <div className="flex justify-end mt-1.5">
+                        <motion.div
+                            className="rounded-lg h-12 bg-fondo w-fit p-3 flex flex-row items-center justify-end cursor-pointer"
+                            onClick={() => { redireccionar(datos?.gatoId) }}
+                            initial={false}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <span className="pi pi-pencil text-paletaGatos-Caribbean"></span>
+
+                            <div className="ml-3 text-sm font-extrabold text-paletaGatos-Caribbean ">Editar</div>
+                        </motion.div>
+                    </div>
+
                     </div>
                 </motion.div>
             </motion.div>
