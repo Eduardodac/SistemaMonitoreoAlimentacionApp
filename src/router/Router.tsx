@@ -6,7 +6,6 @@ import { Perfil } from "../pages/cuenta/Perfil"
 import { Gatos } from "../pages/gatos/Gatos"
 import { EditarGatos } from "../pages/gatos/EditarGatos"
 import { Horarios } from "../pages/horarios/Horarios"
-import { EditarHorario } from "../pages/horarios/EditarHorario"
 import { Avisos } from "../pages/avisos/Avisos"
 import { Configuracion } from "../pages/avisos/Configuracion"
 import { UserConteiner } from "../pages/user/UserConteiner"
@@ -30,7 +29,6 @@ export const Router = () => {
                     <Route path = "gatos" element={<Gatos/>}/>
                     <Route path = "gatos/:gatoId" element={<EditarGatos/>}/>
                     <Route path = "horarios" element={<Horarios/>}/>
-                    <Route path = "horarios/editar" element={<EditarHorario/>}/>
                     <Route path = "avisos" element={<Avisos/>}/>
                     <Route path = "avisos/configuracion" element={<Configuracion/>}/>
 

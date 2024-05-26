@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { IHorarioDate } from "./Horario";
 import { motion } from "framer-motion";
+import { variantsEditar, variantsEliminar } from "../../helpers/variantsHorarios";
+import { EliminarHorario } from "./botones/EliminarHorario";
+import { EditarHorarioBoton } from "./botones/EditarHorarioBoton";
 
 export const EditarHorario = ({ horarioId, hora }: IHorarioDate) => {
     const [horas, setHoras] = useState<string[]>(["0", "0"]);
     const [minutos, setMinutos] = useState<string[]>(["0", "0"]);
+    const [hoverEliminar, setHoverEliminar] = useState(false);
+    const [hoverEditar, setHoverEditar] = useState(false);
 
     useEffect(() => {
         let hor = hora.getHours();
@@ -25,35 +30,15 @@ export const EditarHorario = ({ horarioId, hora }: IHorarioDate) => {
     return (
         <article className="">
             {/* <div className="text-lg font-monse">{`${horas[0]}${horas[1]}:${minutos[0]}${minutos[1]}`}</div> */}
-            <section className="flex flex-row w-full items-center justify-around text-lg mb-2">
-                <motion.div
-                    className="text-center p-1 rounded-md cursor-pointer"
-                    onClick={console.log}
-                    initial={false}
-                    whileHover={{ scale: 1.05  }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                >
-                    <span className="pi pi-angle-double-right text-[#FF4365] font-extra-bold"></span>
-                </motion.div>
-
-
+            <section className="flex flex-row w-full items-center justify-center text-lg mb-2 relative">
+                <EliminarHorario/>
                 <div className="flex flex-row items-center w-fit">
-                    <article className=" bg-[#37515F] font-monse card-hour text-center  w-28 p-2">
+                    <article className=" bg-[#37515F] font-monse  text-center  w-28 p-2">
                         <span className="font-monse text-fondo">{`${horas[0]}${horas[1]} : ${minutos[0]}${minutos[1]} hrs.`}</span>
                     </article>
                 </div>
 
-                <motion.div
-                    className="text-center p-1 rounded-md cursor-pointer"
-                    onClick={console.log}
-                    initial={false}
-                    whileHover={{ scale: 1.05  }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                >
-                    <span className="pi pi-angle-double-left text-[#84A98C] font-extra-bold"></span>
-                </motion.div>
+                <EditarHorarioBoton/>
             </section>
         </article>
     )

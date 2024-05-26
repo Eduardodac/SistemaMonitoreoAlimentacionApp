@@ -99,12 +99,7 @@ export const InformacionGato = ({ datos }: CardGatoProps) => {
                 animate={hover ? "open" : "closed"}
                 variants={variants}
             >
-                <motion.div
-                    className="pl-10 my-auto mt-5"
-                    initial={false}
-                    animate={{ opacity: hover ? 1 : 1 }}
-                    transition={{ delay: 0.25, duration: 0.7 }}
-                >
+                <div className="pl-10 my-auto mt-5">
                     <section className="text-xl font-bold text-fondo mb-3">Información de Collar</section>
                     <div className="w-11/12">
                         <section className="grid grid-cols-2 text-base font-semibold text-fondoCards bg-fondo p-2 rounded-lg">
@@ -133,7 +128,7 @@ export const InformacionGato = ({ datos }: CardGatoProps) => {
                     </div>
 
                     </div>
-                </motion.div>
+                </div>
             </motion.div>
         </article>
     )
