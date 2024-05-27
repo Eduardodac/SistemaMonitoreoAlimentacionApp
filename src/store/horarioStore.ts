@@ -1,25 +1,11 @@
-import {create} from 'zustand';
 
-interface State {
-  hoverEditar: boolean;
-  hoverEliminar: boolean;
-  toggleEditar: () => void;
-  toggleEliminar: () => void;
+export interface IHorario {
+    horarioId: string;
+    hora: string;
 }
 
-const useHorarioStore = create<State>((set) => ({
-    hoverEditar: false,
-    hoverEliminar: false,
-    toggleEditar: () =>
-    set((state) => ({
-        hoverEditar: !state.hoverEditar,
-        hoverEliminar: false,
-    })),
-    toggleEliminar: () =>
-        set((state) => ({
-            hoverEditar: false,
-            hoverEliminar: !state.hoverEliminar,
-        })),
-}));
 
-export default useHorarioStore;
+export interface IHorarioDate {
+    horarioId: string;
+    hora: Date;
+}

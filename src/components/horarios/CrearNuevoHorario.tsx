@@ -12,7 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { crearHorariosApi } from "../../services/httpclient";
 import { useAuthStore } from "../../store/authStore";
 import { ObtenerMensajeErrorGato } from "../../helpers/manejoErrores";
-import { IHorarioDate } from "./Horario";
+import { IHorarioDate } from "../../store/horarioStore";
 
 
 type DefaultType = {
@@ -59,7 +59,7 @@ export const CrearNuevoHorario = ({dia, diaId, agregarHora}: crearHorarioProp) =
 
         const hours = getValues().hora.getHours();
         const minutes = getValues().hora.getMinutes();
-        const hora:any = DateTime.utc(1,1,1,hours, minutes).toISO();
+        const hora:any = DateTime.utc(2000,1,1,hours, minutes).toISO({includeOffset: false, suppressMilliseconds:true});
         console.log(hora)
         const values = {
             horarioId: uuidv4(),
@@ -67,18 +67,13 @@ export const CrearNuevoHorario = ({dia, diaId, agregarHora}: crearHorarioProp) =
             hora: hora
         }
 
-        const valorAAgregar = {
-            horarioId: uuidv4(),
-            hora: new Date (hora)
-        }
-
         if (Object.keys(errors).length == 0) {
-            HorariosAPi.apiHorariosPost(values).then((response) => {
-                console.log(response);
+            HorariosAPi.apiHorariosPost(values).then(() => {
+                //console.log(response);
                 setVisible(false)
                 reset();
                 showSuccess("Creación exitosa");
-                agregarHora(valorAAgregar);
+                agregarHora({horarioId: values.horarioId, hora: values.hora});
             }).catch((error) => {
                 console.log(error)
                 showError(ObtenerMensajeErrorGato(error, "Error al crear el horario"));

@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react"
 import { CrearNuevoHorario } from './CrearNuevoHorario';
 import { EditarHorario } from "./EditarHorario";
-import { IHorario } from "../../pages/horarios/Horarios";
+import { IHorario, IHorarioDate } from "../../store/horarioStore";
 
-export interface IHorarioDate {
-    horarioId: string;
-    hora: Date;
-}
 
 type horarioType = {
     dia: string,
@@ -27,6 +23,19 @@ export const Horario = ({ dia, diaId = 0, horarios }: horarioType) => {
         setHorariosOrdenados(horasConvertidas);
     }, [horarios]);
 
+    const agregarHora = (horaNueva: IHorarioDate) => {
+        const horasConvertidas: IHorarioDate[] = horarios.map(hora => {
+            return { horarioId: hora.horarioId, hora: new Date(hora.hora) }
+        });
+        horasConvertidas.push({ horarioId: horaNueva.horarioId, hora: new Date (horaNueva.hora) });
+        //horasConvertidas.sort(compararHoras);
+        horasConvertidas.forEach(hora=>{
+            console.log("h", hora.hora)
+        })
+
+        setHorariosOrdenados(horasConvertidas);
+    }
+
     const compararHoras = (dateA: IHorarioDate, dateB: IHorarioDate): number => {
         const horaA = dateA.hora.getHours();
         const minutosA = dateA.hora.getMinutes();
@@ -40,25 +49,17 @@ export const Horario = ({ dia, diaId = 0, horarios }: horarioType) => {
         return 0;
     };
 
-    const agregarHora = (horaNueva: IHorarioDate) => {
-        const horasConvertidas: IHorarioDate[] = horarios.map(hora => {
-            return { horarioId: hora.horarioId, hora: new Date(hora.hora) }
-        });
-        horasConvertidas.push(horaNueva);
-        horasConvertidas.sort(compararHoras);
-
-        setHorariosOrdenados(horasConvertidas);
-    }
-
     return diaId != 0 ? (
 
         <div className=" min-w-60 m-5 flex flex-col items-stretch justify-between">
             <div className="mx-auto mb-2 text-paletaIpn-guinda font-bold text-xl">{dia}</div>
-            {
-                horariosOrdenados.map((horario, index) => {
-                    return (<EditarHorario horarioId={horario.horarioId} hora={horario.hora} key={"EditarHorario" + index} />)
-                })
-            }
+            <div className="flex-flex-col items-center justify-center">
+                {
+                    horariosOrdenados.map((horario, index) => {
+                        return (<EditarHorario horarioId={horario.horarioId} hora={horario.hora} key={"EditarHorario" + index} />)
+                    })
+                }
+            </div>
             <CrearNuevoHorario dia={dia} diaId={diaId} agregarHora={agregarHora} />
         </div>
     ) :

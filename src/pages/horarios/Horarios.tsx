@@ -4,11 +4,7 @@ import { useAuthStore } from "../../store/authStore"
 import { DiadelaSemana } from "../../openAPI";
 import { Horario } from "../../components/horarios/Horario";
 import { motion } from "framer-motion";
-
-export interface IHorario {
-    horarioId: string;
-    hora: string;
-}
+import { IHorario } from "../../store/horarioStore";
 
 interface IHorariosList {
     [key: number]: IHorario[];
