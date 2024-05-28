@@ -8,8 +8,8 @@ const createApiConfig =((token:string | null)=>{
             Authorization: 'Bearer ' + token,
         },
     };
-    openApiConfig.basePath = "http://localhost:7090"
-    //openApiConfig.basePath = "https://sistemamonitoreoalimentacionapi.azurewebsites.net"
+    //openApiConfig.basePath = "http://localhost:7090"
+    openApiConfig.basePath = "https://sistemamonitoreoalimentacionapi.azurewebsites.net"
     return openApiConfig
 })
 
