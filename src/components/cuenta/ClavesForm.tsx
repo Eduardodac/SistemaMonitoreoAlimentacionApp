@@ -26,7 +26,7 @@ export const ClavesForm = () => {
     }
 
     return (
-        <article className="border-2 p-5 w-full m-auto max-w-175">
+        <article className="border-2 p-5 m-auto w-160">
             <FormProvider {...methods}>
                 <section className="text-base mb-5 font-bold text-paletaIpn-guinda">Información de Cuenta</section>
                 <form  className=" flex flex-row justify-center">

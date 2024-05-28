@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon';
 import {create} from 'zustand';
 
 // Interfaces
@@ -5,6 +6,14 @@ export interface IInformacionForm {
     apellidoMaterno: string | null;
     apellidoPaterno: string | null;
     nombre: string | null;
+}
+
+export interface IDosificador {
+    dosificadorId: string,
+    fechaSalida: DateTime,
+    fechaActivacion?: DateTime | null,
+    numeroRegistro: string,
+    estatusActivacion: boolean
 }
 
 export interface IClavesForm {
@@ -19,7 +28,8 @@ export interface IImagenUsuario {
 export interface IUserData {
     imagenCuenta:IImagenUsuario,
     clavesForm:IClavesForm,
-    informacionForm:IInformacionForm
+    informacionForm:IInformacionForm,
+    dosificador : IDosificador 
 }
 
 
@@ -42,6 +52,13 @@ const useUserStore = create<UserStore>((set) => ({
         apellidoPaterno: "",
         dosificadorId: "",
         nombre: ""
+    },
+    dosificador:{
+        dosificadorId: "",
+        fechaSalida: DateTime.now(),
+        fechaActivacion: null,
+        numeroRegistro: "",
+        estatusActivacion: false
     }
 },
   setUserData: (data) => set((state) => ({ userData: { ...state.userData, ...data } })),

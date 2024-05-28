@@ -25,3 +25,22 @@ export type CollarType = {
     numeroRegistro: string,
     estatusActivacion: boolean
 }
+
+//dosificadores 
+export type CuentaType={
+    apellidoMaterno?: string | null,
+    apellidoPaterno?: string | null,
+    dosificadorId: string | null,
+    email: string,
+    nombre: string,
+    imagenUsuario?: string | null,
+    dosificador?: null | DosificadorType
+}
+
+export type DosificadorType = {
+    dosificadorId: string,
+    fechaSalida: DateTime,
+    fechaActivacion?: DateTime | null,
+    numeroRegistro: string,
+    estatusActivacion: boolean
+}

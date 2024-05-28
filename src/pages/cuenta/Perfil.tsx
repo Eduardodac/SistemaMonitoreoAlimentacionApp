@@ -6,6 +6,9 @@ import { useAuthStore } from '../../store/authStore';
 import { crearCuentasApi } from '../../services/httpclient';
 import useUserStore, { IUserData } from '../../store/cuentaStore';
 import { motion } from 'framer-motion';
+import { TabPanel, TabView } from 'primereact/tabview';
+import { DateTime } from 'luxon';
+import { ConectarDosificador } from '../../components/cuenta/ConectarDosificador';
 
 export const Perfil = () => {
     const { jwt } = useAuthStore();
@@ -16,6 +19,7 @@ export const Perfil = () => {
         let active = true;
         if (active) {
             CuentasApi.apiCuentasUsuarioGet().then((response) => {
+                console.log("cuenta",response);
                 const respuesta = response.data;
                 const data: IUserData = {
                     imagenCuenta: {
@@ -29,6 +33,13 @@ export const Perfil = () => {
                         apellidoMaterno: respuesta.apellidoMaterno ? respuesta.apellidoMaterno : "",
                         apellidoPaterno: respuesta.apellidoPaterno ? respuesta.apellidoPaterno : "",
                         nombre: respuesta.nombre ? respuesta.nombre : "",
+                    },
+                    dosificador:{
+                        dosificadorId: respuesta.dosificador?.dosificadorId ? respuesta.dosificador?.dosificadorId : "",
+                        fechaSalida: respuesta.dosificador?.fechaSalida ? DateTime.fromISO(respuesta.dosificador?.fechaSalida) : DateTime.now(),
+                        fechaActivacion: respuesta.dosificador?.fechaActivacion ? DateTime.fromISO(respuesta.dosificador?.fechaActivacion) : null,
+                        numeroRegistro: respuesta.dosificador?.numeroRegistro ? respuesta.dosificador?.numeroRegistro : "",
+                        estatusActivacion: respuesta.dosificador?.estatusActivacion ? respuesta.dosificador?.estatusActivacion : false
                     }
                 }
                 setUserData(data)
@@ -56,7 +67,14 @@ export const Perfil = () => {
             <ImagenCuenta />
             <div className='flex flex-col h-fit'>
                 <ClavesForm />
-                <InformacionForm />
+                <TabView className="m-auto bg-fondo mt-5" >
+                    <TabPanel header="Perfil" className="bg-fondo">
+                        <InformacionForm />
+                    </TabPanel>
+                    <TabPanel header="Dosificador" className="bg-fondo">
+                        <ConectarDosificador />
+                    </TabPanel>
+                </TabView>
             </div>
         </motion.div>
     )

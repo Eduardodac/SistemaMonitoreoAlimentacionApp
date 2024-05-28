@@ -275,7 +275,7 @@ export interface Dosificador {
      * @type {string}
      * @memberof Dosificador
      */
-    'fechaSalida'?: string | null;
+    'fechaSalida': string;
     /**
      * 
      * @type {string}
@@ -304,33 +304,39 @@ export interface Dosificador {
 /**
  * 
  * @export
- * @interface DosificadorCreacionDto
+ * @interface DosificadorEntidadDto
  */
-export interface DosificadorCreacionDto {
+export interface DosificadorEntidadDto {
     /**
      * 
      * @type {string}
-     * @memberof DosificadorCreacionDto
+     * @memberof DosificadorEntidadDto
      */
     'dosificadorId'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DosificadorCreacionDto
+     * @memberof DosificadorEntidadDto
      */
     'fechaSalida'?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof DosificadorCreacionDto
+     * @memberof DosificadorEntidadDto
      */
-    'numeroRegistro': string;
+    'fechaActivacion'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof DosificadorEntidadDto
+     */
+    'numeroRegistro'?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof DosificadorCreacionDto
+     * @memberof DosificadorEntidadDto
      */
-    'estatusActivacion': boolean;
+    'estatusActivacion'?: boolean;
 }
 /**
  * 
@@ -496,6 +502,12 @@ export interface GetUsuario {
      * @memberof GetUsuario
      */
     'userName'?: string | null;
+    /**
+     * 
+     * @type {DosificadorEntidadDto}
+     * @memberof GetUsuario
+     */
+    'dosificador'?: DosificadorEntidadDto;
 }
 /**
  * 
@@ -613,6 +625,19 @@ export interface ModificarCollarDto {
      * 
      * @type {string}
      * @memberof ModificarCollarDto
+     */
+    'numeroRegistro'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface ModificarDosificador
+ */
+export interface ModificarDosificador {
+    /**
+     * 
+     * @type {string}
+     * @memberof ModificarDosificador
      */
     'numeroRegistro'?: string | null;
 }
@@ -1720,6 +1745,42 @@ export const CuentasApiAxiosParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
+         * @param {ModificarDosificador} [modificarDosificador] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiCuentasActivarDosificadorPut: async (modificarDosificador?: ModificarDosificador, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/Cuentas/activarDosificador`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(modificarDosificador, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {PasswordChange} [passwordChange] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1748,6 +1809,42 @@ export const CuentasApiAxiosParamCreator = function (configuration?: Configurati
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(passwordChange, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {ModificarDosificador} [modificarDosificador] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiCuentasDesactivarDosificadorPut: async (modificarDosificador?: ModificarDosificador, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/Cuentas/desactivarDosificador`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(modificarDosificador, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1979,12 +2076,32 @@ export const CuentasApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {ModificarDosificador} [modificarDosificador] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiCuentasActivarDosificadorPut(modificarDosificador?: ModificarDosificador, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiCuentasActivarDosificadorPut(modificarDosificador, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @param {PasswordChange} [passwordChange] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async apiCuentasCambiarPasswordPut(passwordChange?: PasswordChange, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RespuestaAutenticacion>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiCuentasCambiarPasswordPut(passwordChange, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {ModificarDosificador} [modificarDosificador] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiCuentasDesactivarDosificadorPut(modificarDosificador?: ModificarDosificador, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiCuentasDesactivarDosificadorPut(modificarDosificador, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2057,12 +2174,30 @@ export const CuentasApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
+         * @param {ModificarDosificador} [modificarDosificador] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiCuentasActivarDosificadorPut(modificarDosificador?: ModificarDosificador, options?: any): AxiosPromise<void> {
+            return localVarFp.apiCuentasActivarDosificadorPut(modificarDosificador, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {PasswordChange} [passwordChange] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         apiCuentasCambiarPasswordPut(passwordChange?: PasswordChange, options?: any): AxiosPromise<RespuestaAutenticacion> {
             return localVarFp.apiCuentasCambiarPasswordPut(passwordChange, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {ModificarDosificador} [modificarDosificador] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiCuentasDesactivarDosificadorPut(modificarDosificador?: ModificarDosificador, options?: any): AxiosPromise<void> {
+            return localVarFp.apiCuentasDesactivarDosificadorPut(modificarDosificador, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2128,6 +2263,17 @@ export const CuentasApiFactory = function (configuration?: Configuration, basePa
 export class CuentasApi extends BaseAPI {
     /**
      * 
+     * @param {ModificarDosificador} [modificarDosificador] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CuentasApi
+     */
+    public apiCuentasActivarDosificadorPut(modificarDosificador?: ModificarDosificador, options?: AxiosRequestConfig) {
+        return CuentasApiFp(this.configuration).apiCuentasActivarDosificadorPut(modificarDosificador, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {PasswordChange} [passwordChange] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2135,6 +2281,17 @@ export class CuentasApi extends BaseAPI {
      */
     public apiCuentasCambiarPasswordPut(passwordChange?: PasswordChange, options?: AxiosRequestConfig) {
         return CuentasApiFp(this.configuration).apiCuentasCambiarPasswordPut(passwordChange, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {ModificarDosificador} [modificarDosificador] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CuentasApi
+     */
+    public apiCuentasDesactivarDosificadorPut(modificarDosificador?: ModificarDosificador, options?: AxiosRequestConfig) {
+        return CuentasApiFp(this.configuration).apiCuentasDesactivarDosificadorPut(modificarDosificador, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2482,11 +2639,11 @@ export const DosificadoresApiAxiosParamCreator = function (configuration?: Confi
         },
         /**
          * 
-         * @param {DosificadorCreacionDto} [dosificadorCreacionDto] 
+         * @param {DosificadorEntidadDto} [dosificadorEntidadDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiDosificadoresPost: async (dosificadorCreacionDto?: DosificadorCreacionDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiDosificadoresPost: async (dosificadorEntidadDto?: DosificadorEntidadDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/Dosificadores`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2509,7 +2666,7 @@ export const DosificadoresApiAxiosParamCreator = function (configuration?: Confi
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(dosificadorCreacionDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(dosificadorEntidadDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2558,12 +2715,12 @@ export const DosificadoresApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {DosificadorCreacionDto} [dosificadorCreacionDto] 
+         * @param {DosificadorEntidadDto} [dosificadorEntidadDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiDosificadoresPost(dosificadorCreacionDto?: DosificadorCreacionDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiDosificadoresPost(dosificadorCreacionDto, options);
+        async apiDosificadoresPost(dosificadorEntidadDto?: DosificadorEntidadDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiDosificadoresPost(dosificadorEntidadDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -2605,12 +2762,12 @@ export const DosificadoresApiFactory = function (configuration?: Configuration, 
         },
         /**
          * 
-         * @param {DosificadorCreacionDto} [dosificadorCreacionDto] 
+         * @param {DosificadorEntidadDto} [dosificadorEntidadDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiDosificadoresPost(dosificadorCreacionDto?: DosificadorCreacionDto, options?: any): AxiosPromise<void> {
-            return localVarFp.apiDosificadoresPost(dosificadorCreacionDto, options).then((request) => request(axios, basePath));
+        apiDosificadoresPost(dosificadorEntidadDto?: DosificadorEntidadDto, options?: any): AxiosPromise<void> {
+            return localVarFp.apiDosificadoresPost(dosificadorEntidadDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2657,13 +2814,13 @@ export class DosificadoresApi extends BaseAPI {
 
     /**
      * 
-     * @param {DosificadorCreacionDto} [dosificadorCreacionDto] 
+     * @param {DosificadorEntidadDto} [dosificadorEntidadDto] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DosificadoresApi
      */
-    public apiDosificadoresPost(dosificadorCreacionDto?: DosificadorCreacionDto, options?: AxiosRequestConfig) {
-        return DosificadoresApiFp(this.configuration).apiDosificadoresPost(dosificadorCreacionDto, options).then((request) => request(this.axios, this.basePath));
+    public apiDosificadoresPost(dosificadorEntidadDto?: DosificadorEntidadDto, options?: AxiosRequestConfig) {
+        return DosificadoresApiFp(this.configuration).apiDosificadoresPost(dosificadorEntidadDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
