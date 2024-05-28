@@ -23,7 +23,7 @@ export const Horario = ({ dia, diaId = 0, horarios }: horarioType) => {
         setHorariosOrdenados(horasConvertidas);
     }, [horarios]);
 
-    const agregarHora = (horaNueva: IHorarioDate) => {
+    const agregarHora = (horaNueva: IHorario) => {
         const horasConvertidas: IHorarioDate[] = horarios.map(hora => {
             return { horarioId: hora.horarioId, hora: new Date(hora.hora) }
         });

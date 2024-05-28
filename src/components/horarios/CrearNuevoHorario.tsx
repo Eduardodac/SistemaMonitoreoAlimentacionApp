@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { Toast } from "primereact/toast";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { Dialog } from "primereact/dialog";
 import { FormProvider, useForm } from "react-hook-form";
@@ -12,7 +11,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { crearHorariosApi } from "../../services/httpclient";
 import { useAuthStore } from "../../store/authStore";
 import { ObtenerMensajeErrorGato } from "../../helpers/manejoErrores";
-import { IHorarioDate } from "../../store/horarioStore";
+import { IHorario } from "../../store/horarioStore";
+import useToastStore from "../../store/toastStore";
 
 
 type DefaultType = {
@@ -26,15 +26,15 @@ const defaultValues: DefaultType = {
 type crearHorarioProp={
     dia: string,
     diaId: number | undefined,
-    agregarHora: (hora:IHorarioDate)=>void
+    agregarHora: (hora:IHorario)=>void
 }
 
 export const CrearNuevoHorario = ({dia, diaId, agregarHora}: crearHorarioProp) => {
     const [visible, setVisible] = useState<boolean>(false);
     const { jwt } = useAuthStore();
     const HorariosAPi = crearHorariosApi(jwt);
+    const getToast = useToastStore();
 
-    const toast = useRef<Toast>(null);
     const methods = useForm({
         mode: 'onTouched',
         resolver: yupResolver(HorarioSchema),
@@ -45,13 +45,6 @@ export const CrearNuevoHorario = ({dia, diaId, agregarHora}: crearHorarioProp) =
         methods.setValue('hora',DateTime.now().toJSDate(),{ shouldValidate: true });
     },[])
 
-
-    const showSuccess = (message: string) => {
-        toast.current?.show({ severity: 'info', summary: 'Success', detail: message, life: 3000 });
-    }
-    const showError = (message: string) => {
-        toast.current?.show({ severity: 'error', summary: 'Error', detail: message, life: 4000 });
-    }
 
     const { getValues, formState: { errors }, reset } = methods;
 
@@ -72,11 +65,12 @@ export const CrearNuevoHorario = ({dia, diaId, agregarHora}: crearHorarioProp) =
                 //console.log(response);
                 setVisible(false)
                 reset();
-                showSuccess("Creación exitosa");
+                getToast.activateToast(!getToast.change, 'info', "Éxito", "Horario creada exitosamente");
                 agregarHora({horarioId: values.horarioId, hora: values.hora});
             }).catch((error) => {
                 console.log(error)
-                showError(ObtenerMensajeErrorGato(error, "Error al crear el horario"));
+                const msj = ObtenerMensajeErrorGato(error, "Error creando horario");
+                getToast.activateToast(!getToast.change, 'error', "Error", msj);
             })
         }
     }
@@ -106,7 +100,6 @@ export const CrearNuevoHorario = ({dia, diaId, agregarHora}: crearHorarioProp) =
     return (
 
         <article className="mt-2 w-full ">
-            <Toast ref={toast} />
             <motion.div
                 className="h-10 rounded-xl bg-paletaIpn-guinda w-48 p-3 mx-auto flex flex-row items-center card-hour cursor-pointer"
                 onClick={visibleForm}

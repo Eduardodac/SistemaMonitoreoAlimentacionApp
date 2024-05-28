@@ -7,10 +7,10 @@ import { IHorarioDate } from "../../store/horarioStore";
 export const EditarHorario = ({ horarioId, hora }: IHorarioDate) => {
     const [horas, setHoras] = useState<string[]>(["0", "0"]);
     const [minutos, setMinutos] = useState<string[]>(["0", "0"]);
-
     const [hoverEditar, setHoverEditar] = useState<boolean>(false);
     const [hoverEliminar, setHoverEliminar] = useState<boolean>(false);
     const [eliminado, setEliminado] = useState<boolean>(false);
+    const [horaMostrada, setHoraMostrada] = useState<Date>(new Date());
 
     useEffect(() => {
         let hor = hora.getHours();
@@ -27,6 +27,7 @@ export const EditarHorario = ({ horarioId, hora }: IHorarioDate) => {
             setHoras([hor.toString()[0], hor.toString()[1]])
         }
 
+        setHoraMostrada(hora);
     }, [hora])
 
     const switchHoverEditar = () => {
@@ -38,6 +39,24 @@ export const EditarHorario = ({ horarioId, hora }: IHorarioDate) => {
         setHoverEditar(false);
         setHoverEliminar(!hoverEliminar);
     };
+
+    const editarHoraMinuto = (horaEdit: string) =>{
+        var horaDiferente = new Date(horaEdit);
+        let hor = horaDiferente.getHours();
+        let min = horaDiferente.getMinutes();
+        if (min < 10) {
+            setMinutos(["0", min.toString()])
+        } else {
+            setMinutos([min.toString()[0], min.toString()[1]])
+        }
+        if (hor
+            < 10) {
+            setHoras(["0", hor.toString()])
+        } else {
+            setHoras([hor.toString()[0], hor.toString()[1]])
+        }
+        setHoraMostrada(horaDiferente);
+    }
 
     return (
         <motion.div
@@ -67,7 +86,12 @@ export const EditarHorario = ({ horarioId, hora }: IHorarioDate) => {
                             <span className="font-monse text-fondo">{`${horas[0]}${horas[1]} : ${minutos[0]}${minutos[1]} hrs.`}</span>
                         </article>
                     </div>
-                    <EditarHorarioBoton hoverEditar={hoverEditar} switchHoverEditar={switchHoverEditar} />
+                    <EditarHorarioBoton 
+                        horarioId={horarioId}
+                        horaActual = {horaMostrada}
+                        hoverEditar={hoverEditar} 
+                        switchHoverEditar={switchHoverEditar}
+                        editarHoraMinuto = {editarHoraMinuto} />
                 </section>
             </motion.div>
         </motion.div>
