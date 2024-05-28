@@ -20,6 +20,7 @@ export const EliminarHorarioBoton = ({horarioId, hoverEliminar, switchHoverElimi
     const eliminarHorario = () =>{
         HorariosApi.apiHorariosHorarioIdDelete(horarioId).then(()=>{
             getToast.activateToast(!getToast.change, 'info', "Éxito", "Horario eliminado exitosamente");
+            switchHoverEliminar();
             setEliminado(true);
         }).catch(error => {
             const msj = ObtenerMensajeErrorGato(error, "Error en la desactivación");
