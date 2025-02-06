@@ -52,7 +52,7 @@ export const Gatos = () => {
                     <CardGato datos={gato} />
                 </article>)
             })
-                : <div className="text-md text-paletaIpn-guinda font-bold text-center mt-16">¡No has regitrado ningún gato todavía, adelante!</div>}
+                : <div className="text-md text-paletaIpn-guinda font-bold text-center mt-16">¡No has registrado ningún gato aún, adelante!</div>}
 
             <CrearNuevoGato />
         </motion.div >

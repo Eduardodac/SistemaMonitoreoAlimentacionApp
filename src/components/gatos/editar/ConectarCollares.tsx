@@ -13,7 +13,7 @@ import { InputText } from 'primereact/inputtext';
 export const ConectarCollares = () => {
     const { jwt } = useAuthStore();
     const GatosAPI = crearGatosApi(jwt);
-    const { gatoData } = useGatoStore();
+    const { gatoData, setGatoData } = useGatoStore();
     const { gatoId } = useParams();
     const toast = useRef<Toast>(null);
     const [inputNumRegistro, setInputNumRegistro] = useState("");
@@ -30,6 +30,7 @@ export const ConectarCollares = () => {
             const Nregistro = gatoData?.collar?.numeroRegistro != "" ? gatoData?.collar?.numeroRegistro : "Sin asignar";
             const fechaISO = gatoData?.collar?.fechaActivacion != "" ? gatoData?.collar?.fechaActivacion.toString() : DateTime.now().toString();
             const FActivacion = DateTime.fromISO(fechaISO).toFormat('DD');
+            console.log("gartodata", gatoData)
             setCollarInfo({
                 fechaActivacion: gatoData?.collar?.fechaActivacion != "" ? FActivacion.toString() : "Sin Fecha",
                 numeroRegistro: Nregistro,
@@ -50,17 +51,20 @@ export const ConectarCollares = () => {
                     numeroRegistro: collarInfo.numeroRegistro,
                 };
                 GatosAPI.apiGatosDesactivarCollarGatoIdPut(gatoId, registro).then(() => {
-                    setCollarInfo({
-                        fechaActivacion: "Sin Fecha",
-                        numeroRegistro: "Sin Asignar",
-                        estatusActivacion: "Inactivo",
-                        estatus: false
-                    })
+                    setGatoData({
+                        collar: {
+                            collarId: '0',
+                            fechaSalida: "Sin Fecha",
+                            fechaActivacion: "",
+                            numeroRegistro: "Sin Asignar",
+                            estatusActivacion: false,
+                        },
+                    });
 
                     showSuccess("Desactivación exitosa");
                 }).catch((error) => {
                     console.log(error);
-                    const msj = ObtenerMensajeErrorGato(error, "Error en la desactivación")
+                    const msj = ObtenerMensajeErrorGato(error, "Error en la Desactivación")
                     showError(msj);
                 })
             } else {
@@ -68,19 +72,23 @@ export const ConectarCollares = () => {
                     numeroRegistro: inputNumRegistro,
                 };
                 GatosAPI.apiGatosActivarCollarGatoIdPut(gatoId, registro).then((response: any) => {
-                    console.log(response)
-                    setCollarInfo({
-                        fechaActivacion: DateTime.fromISO(response.data.fechaActivacion).toFormat('DD').toString(),
-                        numeroRegistro: response.data.numeroRegistro,
-                        estatusActivacion: "Activo",
-                        estatus: true
-                    })
+                    const respuesta = response.data;
+                    console.log("ac", respuesta);
+                    setGatoData({
+                        collar: {
+                            collarId: respuesta.collarId ? respuesta.collarId : "",
+                            fechaSalida: respuesta.fechaSalida ? respuesta.fechaSalida : "",
+                            fechaActivacion: respuesta.fechaActivacion ? respuesta.fechaActivacion : "",
+                            numeroRegistro: respuesta.numeroRegistro,
+                            estatusActivacion: true,
+                        },
+                    });
 
                     setInputNumRegistro("");
-                    showSuccess("Desactivación exitosa");
+                    showSuccess("Activación exitosa");
                 }).catch((error) => {
                     console.log(error);
-                    const msj = ObtenerMensajeErrorGato(error, "Error en la desactivación")
+                    const msj = ObtenerMensajeErrorGato(error, "Error en la activación")
                     showError(msj);
                 })
             }

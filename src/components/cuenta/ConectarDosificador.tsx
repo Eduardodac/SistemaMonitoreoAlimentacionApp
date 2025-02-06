@@ -14,7 +14,7 @@ import useToastStore from '../../store/toastStore';
 export const ConectarDosificador = () => {
     const { jwt } = useAuthStore();
     const CuentasApi = crearCuentasApi(jwt);
-    const {userData} = useUserStore();
+    const {userData, setUserData} = useUserStore();
     const getToast = useToastStore();
     const [inputNumRegistro, setInputNumRegistro] = useState("");
     const [dosificadorInfo, setDosificadorInfo] = useState({
@@ -56,6 +56,14 @@ export const ConectarDosificador = () => {
                     estatus: false
                 })
 
+                setUserData({dosificador:{
+                    dosificadorId: "",
+                    fechaSalida: DateTime.now(),
+                    fechaActivacion: null,
+                    numeroRegistro: "Sin Asignar",
+                    estatusActivacion: false
+                }})
+
                 getToast.activateToast(!getToast.change, 'info', "Éxito", "Dosificador desactivado exitosamente");
             }).catch((error) => {
                 console.log(error);
@@ -67,12 +75,14 @@ export const ConectarDosificador = () => {
                 numeroRegistro: inputNumRegistro,
             };
             CuentasApi.apiCuentasActivarDosificadorPut(registro).then((response: any) => {
-                setDosificadorInfo({
-                    fechaActivacion: DateTime.fromISO(response.data.fechaActivacion).toFormat('DD').toString(),
+                const respuesta = response.data;
+                setUserData({dosificador:{
+                    dosificadorId: respuesta.dosificadorId,
+                    fechaSalida: DateTime.fromISO(respuesta.fechaSalida),
+                    fechaActivacion: DateTime.fromISO(respuesta.fechaActivacion),
                     numeroRegistro: response.data.numeroRegistro,
-                    estatusActivacion: "Activo",
-                    estatus: true
-                })
+                    estatusActivacion: true
+                }})
 
                 setInputNumRegistro("");
                 getToast.activateToast(!getToast.change, 'info', "Éxito", "Dosificador activado exitosamente");
