@@ -41,7 +41,6 @@ export const Horarios = () => {
             });
 
             HorariosApi.apiHorariosGet().then((response)=>{
-                console.log(response)
                 const horas = response.data as { horarioId: string, diaDeLaSemanaId: number, hora: string }[];
                 const newHorariosList = { ...horariosList };
                 horas.map((horarios)=>{

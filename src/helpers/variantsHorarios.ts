@@ -21,11 +21,11 @@ export const variantsEliminar = {
 
 export const variantsEditar = {
     open: () => ({
-        clipPath: `circle(200px at 150px 100px)`,
+        clipPath: `circle(500px at 7px 21px)`,
         zIndex: 10,
         transition: {
             type: "spring",
-            stiffness: 50,
+            stiffness: 10,
             restDelta: 2,
         }
     }),
@@ -34,7 +34,7 @@ export const variantsEditar = {
         zIndex: 20,
         transition: {
             type: "spring",
-            stiffness: 100,
+            stiffness: 130,
             damping: 30
         }
     }

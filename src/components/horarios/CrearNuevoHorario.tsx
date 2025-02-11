@@ -53,7 +53,6 @@ export const CrearNuevoHorario = ({dia, diaId, agregarHora}: crearHorarioProp) =
         const hours = getValues().hora.getHours();
         const minutes = getValues().hora.getMinutes();
         const hora:any = DateTime.utc(2000,1,1,hours, minutes).toISO({includeOffset: false, suppressMilliseconds:true});
-        console.log(hora)
         const values = {
             horarioId: uuidv4(),
             diaDeLaSemanaId: diaId || 0,
@@ -87,9 +86,9 @@ export const CrearNuevoHorario = ({dia, diaId, agregarHora}: crearHorarioProp) =
     }
 
     const footerContent = (
-        <div>
+        <div className="flex justify-around flex-wrap">
             <Button label="Cancelar" severity="secondary" icon="pi pi-times" onClick={resetForm} className="p-button-text" />
-            <Button label="Confirmar" severity="secondary" icon="pi pi-check" className="" onClick={onSubmit} />
+            <Button label="Confirmar" severity="secondary" icon="pi pi-check" className="w-fit" onClick={onSubmit} />
         </div>
     );
 

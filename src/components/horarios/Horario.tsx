@@ -3,7 +3,6 @@ import { CrearNuevoHorario } from './CrearNuevoHorario';
 import { EditarHorario } from "./EditarHorario";
 import { IHorario, IHorarioDate } from "../../store/horarioStore";
 
-
 type horarioType = {
     dia: string,
     diaId: number | undefined,
@@ -24,7 +23,7 @@ export const Horario = ({ dia, diaId = 0, horarios }: horarioType) => {
     }, [horarios]);
 
     const agregarHora = (horaNueva: IHorario) => {
-        const horasConvertidas: IHorarioDate[] = horarios.map(hora => {
+        const horasConvertidas: IHorarioDate[] = horariosOrdenados.map(hora => {
             return { horarioId: hora.horarioId, hora: new Date(hora.hora) }
         });
         horasConvertidas.push({ horarioId: horaNueva.horarioId, hora: new Date (horaNueva.hora) });

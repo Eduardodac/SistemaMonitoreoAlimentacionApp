@@ -71,7 +71,7 @@ export const EditarHorario = ({ horarioId, hora }: IHorarioDate) => {
         >
             <motion.div
                 initial={false}
-                animate={eliminado ? { y: 50, opacity: 0 }: { y: 0, opacity: 1}}
+                animate={eliminado ? { y: 50, opacity: 0, display:"none" }: { y: 0, opacity: 1, display:"block"}}
                 transition={{ delay: 0, duration: 0.75 }}
             >
                 {/* <div className="text-lg font-monse">{`${horas[0]}${horas[1]}:${minutos[0]}${minutos[1]}`}</div> */}

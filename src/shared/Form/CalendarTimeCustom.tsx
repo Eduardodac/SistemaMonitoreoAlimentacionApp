@@ -21,8 +21,6 @@ export const CalendarTimeCustom = ({ name, id, label, className=""}: InputProps)
                         id={field.name} 
                         value={field.value} 
                         onChange={(e) => field.onChange(e.value)} 
-                        dateFormat="dd/mm/yy" 
-                        mask="99/99/9999"  
                         timeOnly 
                         className={`${errors[id] ? 'p-invalid' : ''}`}/>
                 )} />
