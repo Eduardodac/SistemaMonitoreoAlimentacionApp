@@ -22,7 +22,7 @@ export const MenuItemTemplate = ({
             >
                 <div className='flex items-center gap-2 text-sm py-2 pl-3'>
                 <img src={img} alt={path} className='h-5 w-5 opacity-60' />
-                    <p>{label}</p>
+                    <p className=''>{label}</p>
                 </div>
             </NavLink>
 

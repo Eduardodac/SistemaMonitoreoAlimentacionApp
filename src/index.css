@@ -17,12 +17,8 @@ body {
   width: 100%;
   height: 100vh;
   background: #F0F0C9;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
-}
-
-*{
-  font-family: 'Verdana';
 }
 
 ::-webkit-scrollbar {
@@ -66,4 +62,16 @@ body {
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.71);
     -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.71);
     -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.71);
+}
+
+.cuadroInformativo{
+    width: 23%;
+    height: 150px;
+    border: 1px solid rgba(30,20,76);
+    margin: 0px 10px 10px 0px;
+    border-radius: 16px;
+}
+
+.cuadroInformativo:last-child{
+    margin-left:0px;
 }
