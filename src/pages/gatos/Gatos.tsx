@@ -46,7 +46,7 @@ export const Gatos = () => {
             }}
             transition={{ duration: 0.75 }}
         >
-            <section className="text-2xl font-bold text-paletaIpn-guinda self-start mb-5">Perfil de tus mascotas</section>
+            <section className="text-center text-2xl font-bold text-paletaIpn-guinda self-start mb-5">Perfil de tus mascotas</section>
             {listaGatos != null ? listaGatos.map((gato, index) => {
                 return (<article className="my-10" key={"gatcard" + index}>
                     <CardGato datos={gato} />

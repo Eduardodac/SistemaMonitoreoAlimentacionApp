@@ -1,5 +1,4 @@
 import { motion } from "framer-motion"
-import { CuadroInformativo } from "../../components/dashboard/CuadroInformativo"
 import best from "../../assets/best-day.svg"
 import worst from "../../assets/worstday.svg"
 import food from "../../assets/animal-food.svg"
@@ -22,9 +21,9 @@ export const Dashboard = () => {
             }}
             transition={{ duration: 0.75 }}
         >
-            <div className="flex flex-row justify-between">
-                <CuadroInformativo text="Total alimento consumido en gramos" icon={food} numero="4724"/>
-                <CuadroInformativo text="Tiempo de consumo en minutos" icon={time} numero="100"/>
+            <div className="flex flex-row justify-around">
+                <SegundoCuadroInformativo text="Total alimento consumido en gramos" icon={food} dia="4724"/>
+                <SegundoCuadroInformativo text="Tiempo de consumo en minutos" icon={time} dia="100"/>
                 <SegundoCuadroInformativo text="Día de más consumo" icon={best} dia="Miércoles"/>
                 <SegundoCuadroInformativo text="Día de menos consumo" icon={worst} dia="Martes"/>
             </div>
