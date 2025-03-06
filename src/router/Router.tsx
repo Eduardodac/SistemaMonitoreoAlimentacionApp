@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { AppNavigatorBar } from "../pages/AppNavigatorBar"
-import { HomePage } from "../pages/HomePage"
+import { HomePage } from "../pages/home/HomePage"
 import { Dashboard } from "../pages/dashboard/Dashboard"
 import { Perfil } from "../pages/cuenta/Perfil"
 import { Gatos } from "../pages/gatos/Gatos"

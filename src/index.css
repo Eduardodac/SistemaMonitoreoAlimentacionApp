@@ -75,3 +75,10 @@ body {
 .cuadroInformativo:last-child{
     margin-left:0px;
 }
+
+.cardHome{
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    background: linear-gradient(#8C657B  , #F2F2F2);
+    color: #6C1D45;
+}
