@@ -1,4 +1,4 @@
-import { CuentasApi, DiasdelaSemanaApi, DosificadoresApi, GatosApi, HorariosApi } from "../openAPI";
+import { ActividadFelinaApi, CuentasApi, DiasdelaSemanaApi, DosificadoresApi, GatosApi, HorariosApi } from "../openAPI";
 import { Configuration } from "../openAPI/configuration";
 
 const createApiConfig =((token:string | null)=>{
@@ -8,8 +8,8 @@ const createApiConfig =((token:string | null)=>{
             Authorization: 'Bearer ' + token,
         },
     };
-    //openApiConfig.basePath = "http://localhost:7090"
-    openApiConfig.basePath = "https://sistemamonitoreoalimentacionapi.azurewebsites.net"
+    openApiConfig.basePath = "http://localhost:7090"
+    //openApiConfig.basePath = "https://sistemamonitoreoalimentacionapi.azurewebsites.net"
     return openApiConfig
 })
 
@@ -31,6 +31,10 @@ export const crearDiadelaSemanaApi = ((token:string | null)=>{
 
 export const crearDosificadorApi = ((token:string | null)=>{
     return new DosificadoresApi(createApiConfig(token));
+})
+
+export const crearActividadesFelinasApi = ((token:string | null)=>{
+    return new ActividadFelinaApi(createApiConfig(token));
 })
 
 

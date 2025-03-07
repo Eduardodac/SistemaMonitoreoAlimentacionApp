@@ -26,61 +26,6 @@ import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError } from './base';
 /**
  * 
  * @export
- * @interface ActividadFelina
- */
-export interface ActividadFelina {
-    /**
-     * 
-     * @type {string}
-     * @memberof ActividadFelina
-     */
-    'actividadFelinaId'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActividadFelina
-     */
-    'gatoId': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActividadFelina
-     */
-    'fechaInicio': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActividadFelina
-     */
-    'fechaFin': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ActividadFelina
-     */
-    'aproximaciones'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ActividadFelina
-     */
-    'alimentoConsumido'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ActividadFelina
-     */
-    'aproximacionesSinConsumo'?: number;
-    /**
-     * 
-     * @type {Gato}
-     * @memberof ActividadFelina
-     */
-    'gato'?: Gato;
-}
-/**
- * 
- * @export
  * @interface Aviso
  */
 export interface Aviso {
@@ -210,6 +155,31 @@ export interface CollarEntidadDto {
 /**
  * 
  * @export
+ * @interface ConfirmarDosificacionDto
+ */
+export interface ConfirmarDosificacionDto {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ConfirmarDosificacionDto
+     */
+    'dosificar'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ConfirmarDosificacionDto
+     */
+    'habilitado'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConfirmarDosificacionDto
+     */
+    'hora'?: string | null;
+}
+/**
+ * 
+ * @export
  * @interface CredencialesUsuario
  */
 export interface CredencialesUsuario {
@@ -244,19 +214,6 @@ export interface DiadelaSemana {
      * @memberof DiadelaSemana
      */
     'dia': string;
-}
-/**
- * 
- * @export
- * @interface DisponibilidadAvisoDto
- */
-export interface DisponibilidadAvisoDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof DisponibilidadAvisoDto
-     */
-    'alimentoDisponible'?: number;
 }
 /**
  * 
@@ -404,6 +361,25 @@ export interface Gato {
      * @memberof Gato
      */
     'collar'?: Collar;
+}
+/**
+ * 
+ * @export
+ * @interface GatoBoxEntidadDto
+ */
+export interface GatoBoxEntidadDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof GatoBoxEntidadDto
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GatoBoxEntidadDto
+     */
+    'code'?: string;
 }
 /**
  * 
@@ -593,6 +569,19 @@ export interface HorarioModificarDto {
 /**
  * 
  * @export
+ * @interface ModificarAlimentoDisponibleDto
+ */
+export interface ModificarAlimentoDisponibleDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof ModificarAlimentoDisponibleDto
+     */
+    'distancia'?: number;
+}
+/**
+ * 
+ * @export
  * @interface ModificarAvisoDto
  */
 export interface ModificarAvisoDto {
@@ -700,55 +689,6 @@ export interface ModificarUsuario {
 /**
  * 
  * @export
- * @interface NuevaActividadFelinaDto
- */
-export interface NuevaActividadFelinaDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof NuevaActividadFelinaDto
-     */
-    'actividadFelinaId'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof NuevaActividadFelinaDto
-     */
-    'gatoId': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof NuevaActividadFelinaDto
-     */
-    'fechaInicio': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof NuevaActividadFelinaDto
-     */
-    'fechaFin': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof NuevaActividadFelinaDto
-     */
-    'aproximaciones'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof NuevaActividadFelinaDto
-     */
-    'alimentoConsumido'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof NuevaActividadFelinaDto
-     */
-    'aproximacionesSinConsumo'?: number;
-}
-/**
- * 
- * @export
  * @interface NuevoAvisoDto
  */
 export interface NuevoAvisoDto {
@@ -794,12 +734,6 @@ export interface NuevoRegistroDto {
      * @type {string}
      * @memberof NuevoRegistroDto
      */
-    'registroId'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof NuevoRegistroDto
-     */
     'dosificadorId': string;
     /**
      * 
@@ -809,28 +743,16 @@ export interface NuevoRegistroDto {
     'collarId': string;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof NuevoRegistroDto
      */
-    'duracion': string;
+    'duracion': number;
     /**
      * 
      * @type {number}
      * @memberof NuevoRegistroDto
      */
     'consumo': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof NuevoRegistroDto
-     */
-    'hora': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof NuevoRegistroDto
-     */
-    'integradoAAnalisis'?: boolean;
 }
 /**
  * 
@@ -908,10 +830,10 @@ export interface Registro {
     'collarId': string;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof Registro
      */
-    'duracion': string;
+    'duracion': number;
     /**
      * 
      * @type {number}
@@ -1111,14 +1033,18 @@ export const ActividadFelinaApiAxiosParamCreator = function (configuration?: Con
         /**
          * 
          * @param {string} gatoId 
+         * @param {number} periodo 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiActividadFelinaGatoIdGet: async (gatoId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiActividadFelinaGatoIdPeriodoGet: async (gatoId: string, periodo: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'gatoId' is not null or undefined
-            assertParamExists('apiActividadFelinaGatoIdGet', 'gatoId', gatoId)
-            const localVarPath = `/api/ActividadFelina/{gatoId}`
-                .replace(`{${"gatoId"}}`, encodeURIComponent(String(gatoId)));
+            assertParamExists('apiActividadFelinaGatoIdPeriodoGet', 'gatoId', gatoId)
+            // verify required parameter 'periodo' is not null or undefined
+            assertParamExists('apiActividadFelinaGatoIdPeriodoGet', 'periodo', periodo)
+            const localVarPath = `/api/ActividadFelina/{gatoId}/{periodo}`
+                .replace(`{${"gatoId"}}`, encodeURIComponent(String(gatoId)))
+                .replace(`{${"periodo"}}`, encodeURIComponent(String(periodo)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1129,9 +1055,6 @@ export const ActividadFelinaApiAxiosParamCreator = function (configuration?: Con
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -1146,11 +1069,47 @@ export const ActividadFelinaApiAxiosParamCreator = function (configuration?: Con
         },
         /**
          * 
-         * @param {NuevaActividadFelinaDto} [nuevaActividadFelinaDto] 
+         * @param {string} gatoId 
+         * @param {number} periodo 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiActividadFelinaPost: async (nuevaActividadFelinaDto?: NuevaActividadFelinaDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiActividadFelinaPeriodoGet: async (gatoId: string, periodo: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'gatoId' is not null or undefined
+            assertParamExists('apiActividadFelinaPeriodoGet', 'gatoId', gatoId)
+            // verify required parameter 'periodo' is not null or undefined
+            assertParamExists('apiActividadFelinaPeriodoGet', 'periodo', periodo)
+            const localVarPath = `/api/ActividadFelina/{periodo}`
+                .replace(`{${"gatoId"}}`, encodeURIComponent(String(gatoId)))
+                .replace(`{${"periodo"}}`, encodeURIComponent(String(periodo)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiActividadFelinaPut: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/ActividadFelina`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1159,21 +1118,15 @@ export const ActividadFelinaApiAxiosParamCreator = function (configuration?: Con
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(nuevaActividadFelinaDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1193,21 +1146,32 @@ export const ActividadFelinaApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} gatoId 
+         * @param {number} periodo 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiActividadFelinaGatoIdGet(gatoId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ActividadFelina>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiActividadFelinaGatoIdGet(gatoId, options);
+        async apiActividadFelinaGatoIdPeriodoGet(gatoId: string, periodo: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiActividadFelinaGatoIdPeriodoGet(gatoId, periodo, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @param {NuevaActividadFelinaDto} [nuevaActividadFelinaDto] 
+         * @param {string} gatoId 
+         * @param {number} periodo 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiActividadFelinaPost(nuevaActividadFelinaDto?: NuevaActividadFelinaDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiActividadFelinaPost(nuevaActividadFelinaDto, options);
+        async apiActividadFelinaPeriodoGet(gatoId: string, periodo: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiActividadFelinaPeriodoGet(gatoId, periodo, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiActividadFelinaPut(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiActividadFelinaPut(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1223,20 +1187,30 @@ export const ActividadFelinaApiFactory = function (configuration?: Configuration
         /**
          * 
          * @param {string} gatoId 
+         * @param {number} periodo 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiActividadFelinaGatoIdGet(gatoId: string, options?: any): AxiosPromise<Array<ActividadFelina>> {
-            return localVarFp.apiActividadFelinaGatoIdGet(gatoId, options).then((request) => request(axios, basePath));
+        apiActividadFelinaGatoIdPeriodoGet(gatoId: string, periodo: number, options?: any): AxiosPromise<void> {
+            return localVarFp.apiActividadFelinaGatoIdPeriodoGet(gatoId, periodo, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {NuevaActividadFelinaDto} [nuevaActividadFelinaDto] 
+         * @param {string} gatoId 
+         * @param {number} periodo 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiActividadFelinaPost(nuevaActividadFelinaDto?: NuevaActividadFelinaDto, options?: any): AxiosPromise<void> {
-            return localVarFp.apiActividadFelinaPost(nuevaActividadFelinaDto, options).then((request) => request(axios, basePath));
+        apiActividadFelinaPeriodoGet(gatoId: string, periodo: number, options?: any): AxiosPromise<void> {
+            return localVarFp.apiActividadFelinaPeriodoGet(gatoId, periodo, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiActividadFelinaPut(options?: any): AxiosPromise<void> {
+            return localVarFp.apiActividadFelinaPut(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1251,23 +1225,35 @@ export class ActividadFelinaApi extends BaseAPI {
     /**
      * 
      * @param {string} gatoId 
+     * @param {number} periodo 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActividadFelinaApi
      */
-    public apiActividadFelinaGatoIdGet(gatoId: string, options?: AxiosRequestConfig) {
-        return ActividadFelinaApiFp(this.configuration).apiActividadFelinaGatoIdGet(gatoId, options).then((request) => request(this.axios, this.basePath));
+    public apiActividadFelinaGatoIdPeriodoGet(gatoId: string, periodo: number, options?: AxiosRequestConfig) {
+        return ActividadFelinaApiFp(this.configuration).apiActividadFelinaGatoIdPeriodoGet(gatoId, periodo, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {NuevaActividadFelinaDto} [nuevaActividadFelinaDto] 
+     * @param {string} gatoId 
+     * @param {number} periodo 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActividadFelinaApi
      */
-    public apiActividadFelinaPost(nuevaActividadFelinaDto?: NuevaActividadFelinaDto, options?: AxiosRequestConfig) {
-        return ActividadFelinaApiFp(this.configuration).apiActividadFelinaPost(nuevaActividadFelinaDto, options).then((request) => request(this.axios, this.basePath));
+    public apiActividadFelinaPeriodoGet(gatoId: string, periodo: number, options?: AxiosRequestConfig) {
+        return ActividadFelinaApiFp(this.configuration).apiActividadFelinaPeriodoGet(gatoId, periodo, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActividadFelinaApi
+     */
+    public apiActividadFelinaPut(options?: AxiosRequestConfig) {
+        return ActividadFelinaApiFp(this.configuration).apiActividadFelinaPut(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -1278,46 +1264,6 @@ export class ActividadFelinaApi extends BaseAPI {
  */
 export const AvisosApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
-        /**
-         * 
-         * @param {string} avisoId 
-         * @param {ModificarAvisoDto} [modificarAvisoDto] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiAvisosAvisoIdPut: async (avisoId: string, modificarAvisoDto?: ModificarAvisoDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'avisoId' is not null or undefined
-            assertParamExists('apiAvisosAvisoIdPut', 'avisoId', avisoId)
-            const localVarPath = `/api/Avisos/{avisoId}`
-                .replace(`{${"avisoId"}}`, encodeURIComponent(String(avisoId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(modificarAvisoDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
         /**
          * 
          * @param {*} [options] Override http request option.
@@ -1336,9 +1282,6 @@ export const AvisosApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -1352,12 +1295,16 @@ export const AvisosApiAxiosParamCreator = function (configuration?: Configuratio
         },
         /**
          * 
-         * @param {NuevoAvisoDto} [nuevoAvisoDto] 
+         * @param {string} dosificadorId 
+         * @param {ModificarAlimentoDisponibleDto} [modificarAlimentoDisponibleDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAvisosPost: async (nuevoAvisoDto?: NuevoAvisoDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/Avisos`;
+        apiAvisosModificarAlimentoDisponibleDosificadorIdPut: async (dosificadorId: string, modificarAlimentoDisponibleDto?: ModificarAlimentoDisponibleDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'dosificadorId' is not null or undefined
+            assertParamExists('apiAvisosModificarAlimentoDisponibleDosificadorIdPut', 'dosificadorId', dosificadorId)
+            const localVarPath = `/api/Avisos/modificarAlimentoDisponible/{dosificadorId}`
+                .replace(`{${"dosificadorId"}}`, encodeURIComponent(String(dosificadorId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1365,12 +1312,9 @@ export const AvisosApiAxiosParamCreator = function (configuration?: Configuratio
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -1379,7 +1323,40 @@ export const AvisosApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(nuevoAvisoDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(modificarAlimentoDisponibleDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {ModificarAvisoDto} [modificarAvisoDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiAvisosPut: async (modificarAvisoDto?: ModificarAvisoDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/Avisos`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(modificarAvisoDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1398,32 +1375,32 @@ export const AvisosApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} avisoId 
-         * @param {ModificarAvisoDto} [modificarAvisoDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAvisosAvisoIdPut(avisoId: string, modificarAvisoDto?: ModificarAvisoDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAvisosAvisoIdPut(avisoId, modificarAvisoDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiAvisosGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Aviso>> {
+        async apiAvisosGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NuevoAvisoDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiAvisosGet(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @param {NuevoAvisoDto} [nuevoAvisoDto] 
+         * @param {string} dosificadorId 
+         * @param {ModificarAlimentoDisponibleDto} [modificarAlimentoDisponibleDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAvisosPost(nuevoAvisoDto?: NuevoAvisoDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAvisosPost(nuevoAvisoDto, options);
+        async apiAvisosModificarAlimentoDisponibleDosificadorIdPut(dosificadorId: string, modificarAlimentoDisponibleDto?: ModificarAlimentoDisponibleDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAvisosModificarAlimentoDisponibleDosificadorIdPut(dosificadorId, modificarAlimentoDisponibleDto, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {ModificarAvisoDto} [modificarAvisoDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiAvisosPut(modificarAvisoDto?: ModificarAvisoDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAvisosPut(modificarAvisoDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1438,30 +1415,30 @@ export const AvisosApiFactory = function (configuration?: Configuration, basePat
     return {
         /**
          * 
-         * @param {string} avisoId 
-         * @param {ModificarAvisoDto} [modificarAvisoDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAvisosAvisoIdPut(avisoId: string, modificarAvisoDto?: ModificarAvisoDto, options?: any): AxiosPromise<void> {
-            return localVarFp.apiAvisosAvisoIdPut(avisoId, modificarAvisoDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiAvisosGet(options?: any): AxiosPromise<Aviso> {
+        apiAvisosGet(options?: any): AxiosPromise<NuevoAvisoDto> {
             return localVarFp.apiAvisosGet(options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {NuevoAvisoDto} [nuevoAvisoDto] 
+         * @param {string} dosificadorId 
+         * @param {ModificarAlimentoDisponibleDto} [modificarAlimentoDisponibleDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAvisosPost(nuevoAvisoDto?: NuevoAvisoDto, options?: any): AxiosPromise<void> {
-            return localVarFp.apiAvisosPost(nuevoAvisoDto, options).then((request) => request(axios, basePath));
+        apiAvisosModificarAlimentoDisponibleDosificadorIdPut(dosificadorId: string, modificarAlimentoDisponibleDto?: ModificarAlimentoDisponibleDto, options?: any): AxiosPromise<void> {
+            return localVarFp.apiAvisosModificarAlimentoDisponibleDosificadorIdPut(dosificadorId, modificarAlimentoDisponibleDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {ModificarAvisoDto} [modificarAvisoDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiAvisosPut(modificarAvisoDto?: ModificarAvisoDto, options?: any): AxiosPromise<void> {
+            return localVarFp.apiAvisosPut(modificarAvisoDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1475,18 +1452,6 @@ export const AvisosApiFactory = function (configuration?: Configuration, basePat
 export class AvisosApi extends BaseAPI {
     /**
      * 
-     * @param {string} avisoId 
-     * @param {ModificarAvisoDto} [modificarAvisoDto] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AvisosApi
-     */
-    public apiAvisosAvisoIdPut(avisoId: string, modificarAvisoDto?: ModificarAvisoDto, options?: AxiosRequestConfig) {
-        return AvisosApiFp(this.configuration).apiAvisosAvisoIdPut(avisoId, modificarAvisoDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AvisosApi
@@ -1497,13 +1462,25 @@ export class AvisosApi extends BaseAPI {
 
     /**
      * 
-     * @param {NuevoAvisoDto} [nuevoAvisoDto] 
+     * @param {string} dosificadorId 
+     * @param {ModificarAlimentoDisponibleDto} [modificarAlimentoDisponibleDto] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AvisosApi
      */
-    public apiAvisosPost(nuevoAvisoDto?: NuevoAvisoDto, options?: AxiosRequestConfig) {
-        return AvisosApiFp(this.configuration).apiAvisosPost(nuevoAvisoDto, options).then((request) => request(this.axios, this.basePath));
+    public apiAvisosModificarAlimentoDisponibleDosificadorIdPut(dosificadorId: string, modificarAlimentoDisponibleDto?: ModificarAlimentoDisponibleDto, options?: AxiosRequestConfig) {
+        return AvisosApiFp(this.configuration).apiAvisosModificarAlimentoDisponibleDosificadorIdPut(dosificadorId, modificarAlimentoDisponibleDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {ModificarAvisoDto} [modificarAvisoDto] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AvisosApi
+     */
+    public apiAvisosPut(modificarAvisoDto?: ModificarAvisoDto, options?: AxiosRequestConfig) {
+        return AvisosApiFp(this.configuration).apiAvisosPut(modificarAvisoDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -1536,9 +1513,6 @@ export const CollaresApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -1567,9 +1541,6 @@ export const CollaresApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -1600,9 +1571,6 @@ export const CollaresApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -1762,9 +1730,6 @@ export const CuentasApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -1797,9 +1762,6 @@ export const CuentasApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -1834,9 +1796,6 @@ export const CuentasApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -1870,9 +1829,6 @@ export const CuentasApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
             const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
             if (imagen !== undefined) { 
@@ -1911,9 +1867,6 @@ export const CuentasApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -1946,9 +1899,6 @@ export const CuentasApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -1983,9 +1933,6 @@ export const CuentasApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -2018,9 +1965,6 @@ export const CuentasApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -2049,9 +1993,6 @@ export const CuentasApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -2384,9 +2325,6 @@ export const DiasdelaSemanaApiAxiosParamCreator = function (configuration?: Conf
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -2416,9 +2354,6 @@ export const DiasdelaSemanaApiAxiosParamCreator = function (configuration?: Conf
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -2532,46 +2467,6 @@ export const DosificadoresApiAxiosParamCreator = function (configuration?: Confi
         /**
          * 
          * @param {string} dosificadorId 
-         * @param {DisponibilidadAvisoDto} [disponibilidadAvisoDto] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiDosificadoresDisponibilidadDosificadorIdPut: async (dosificadorId: string, disponibilidadAvisoDto?: DisponibilidadAvisoDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'dosificadorId' is not null or undefined
-            assertParamExists('apiDosificadoresDisponibilidadDosificadorIdPut', 'dosificadorId', dosificadorId)
-            const localVarPath = `/api/Dosificadores/disponibilidad/{dosificadorId}`
-                .replace(`{${"dosificadorId"}}`, encodeURIComponent(String(dosificadorId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(disponibilidadAvisoDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} dosificadorId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2590,9 +2485,6 @@ export const DosificadoresApiAxiosParamCreator = function (configuration?: Confi
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -2622,9 +2514,6 @@ export const DosificadoresApiAxiosParamCreator = function (configuration?: Confi
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -2656,9 +2545,6 @@ export const DosificadoresApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -2683,17 +2569,6 @@ export const DosificadoresApiAxiosParamCreator = function (configuration?: Confi
 export const DosificadoresApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = DosificadoresApiAxiosParamCreator(configuration)
     return {
-        /**
-         * 
-         * @param {string} dosificadorId 
-         * @param {DisponibilidadAvisoDto} [disponibilidadAvisoDto] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiDosificadoresDisponibilidadDosificadorIdPut(dosificadorId: string, disponibilidadAvisoDto?: DisponibilidadAvisoDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiDosificadoresDisponibilidadDosificadorIdPut(dosificadorId, disponibilidadAvisoDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
         /**
          * 
          * @param {string} dosificadorId 
@@ -2736,16 +2611,6 @@ export const DosificadoresApiFactory = function (configuration?: Configuration, 
         /**
          * 
          * @param {string} dosificadorId 
-         * @param {DisponibilidadAvisoDto} [disponibilidadAvisoDto] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiDosificadoresDisponibilidadDosificadorIdPut(dosificadorId: string, disponibilidadAvisoDto?: DisponibilidadAvisoDto, options?: any): AxiosPromise<void> {
-            return localVarFp.apiDosificadoresDisponibilidadDosificadorIdPut(dosificadorId, disponibilidadAvisoDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} dosificadorId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2779,18 +2644,6 @@ export const DosificadoresApiFactory = function (configuration?: Configuration, 
  * @extends {BaseAPI}
  */
 export class DosificadoresApi extends BaseAPI {
-    /**
-     * 
-     * @param {string} dosificadorId 
-     * @param {DisponibilidadAvisoDto} [disponibilidadAvisoDto] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DosificadoresApi
-     */
-    public apiDosificadoresDisponibilidadDosificadorIdPut(dosificadorId: string, disponibilidadAvisoDto?: DisponibilidadAvisoDto, options?: AxiosRequestConfig) {
-        return DosificadoresApiFp(this.configuration).apiDosificadoresDisponibilidadDosificadorIdPut(dosificadorId, disponibilidadAvisoDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
     /**
      * 
      * @param {string} dosificadorId 
@@ -2854,9 +2707,6 @@ export const GatosApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -2865,6 +2715,35 @@ export const GatosApiAxiosParamCreator = function (configuration?: Configuration
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(modificarCollarDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGatosComboBoxGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/Gatos/comboBox`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2893,9 +2772,6 @@ export const GatosApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -2933,9 +2809,6 @@ export const GatosApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -2969,9 +2842,6 @@ export const GatosApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -3010,9 +2880,6 @@ export const GatosApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -3044,9 +2911,6 @@ export const GatosApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -3082,9 +2946,6 @@ export const GatosApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
             const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
             if (imagen !== undefined) { 
@@ -3123,6 +2984,15 @@ export const GatosApiFp = function(configuration?: Configuration) {
          */
         async apiGatosActivarCollarGatoIdPut(gatoId: string, modificarCollarDto?: ModificarCollarDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiGatosActivarCollarGatoIdPut(gatoId, modificarCollarDto, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiGatosComboBoxGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GatoBoxEntidadDto>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiGatosComboBoxGet(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -3210,6 +3080,14 @@ export const GatosApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGatosComboBoxGet(options?: any): AxiosPromise<Array<GatoBoxEntidadDto>> {
+            return localVarFp.apiGatosComboBoxGet(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {string} gatoId 
          * @param {ModificarCollarDto} [modificarCollarDto] 
          * @param {*} [options] Override http request option.
@@ -3285,6 +3163,16 @@ export class GatosApi extends BaseAPI {
      */
     public apiGatosActivarCollarGatoIdPut(gatoId: string, modificarCollarDto?: ModificarCollarDto, options?: AxiosRequestConfig) {
         return GatosApiFp(this.configuration).apiGatosActivarCollarGatoIdPut(gatoId, modificarCollarDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GatosApi
+     */
+    public apiGatosComboBoxGet(options?: AxiosRequestConfig) {
+        return GatosApiFp(this.configuration).apiGatosComboBoxGet(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3366,6 +3254,72 @@ export const HorariosApiAxiosParamCreator = function (configuration?: Configurat
     return {
         /**
          * 
+         * @param {string} dosificadorId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiHorariosConfirmarDosificacionDosificadorIdGet: async (dosificadorId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'dosificadorId' is not null or undefined
+            assertParamExists('apiHorariosConfirmarDosificacionDosificadorIdGet', 'dosificadorId', dosificadorId)
+            const localVarPath = `/api/Horarios/confirmarDosificacion/{dosificadorId}`
+                .replace(`{${"dosificadorId"}}`, encodeURIComponent(String(dosificadorId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} dosificadorId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiHorariosDosificadorIdGet: async (dosificadorId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'dosificadorId' is not null or undefined
+            assertParamExists('apiHorariosDosificadorIdGet', 'dosificadorId', dosificadorId)
+            const localVarPath = `/api/Horarios/{dosificadorId}`
+                .replace(`{${"dosificadorId"}}`, encodeURIComponent(String(dosificadorId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3381,9 +3335,6 @@ export const HorariosApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -3417,9 +3368,6 @@ export const HorariosApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -3455,9 +3403,6 @@ export const HorariosApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -3491,9 +3436,6 @@ export const HorariosApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -3518,6 +3460,26 @@ export const HorariosApiAxiosParamCreator = function (configuration?: Configurat
 export const HorariosApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = HorariosApiAxiosParamCreator(configuration)
     return {
+        /**
+         * 
+         * @param {string} dosificadorId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiHorariosConfirmarDosificacionDosificadorIdGet(dosificadorId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConfirmarDosificacionDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiHorariosConfirmarDosificacionDosificadorIdGet(dosificadorId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} dosificadorId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiHorariosDosificadorIdGet(dosificadorId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<HorarioEntidadDto>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiHorariosDosificadorIdGet(dosificadorId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
         /**
          * 
          * @param {*} [options] Override http request option.
@@ -3570,6 +3532,24 @@ export const HorariosApiFactory = function (configuration?: Configuration, baseP
     return {
         /**
          * 
+         * @param {string} dosificadorId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiHorariosConfirmarDosificacionDosificadorIdGet(dosificadorId: string, options?: any): AxiosPromise<ConfirmarDosificacionDto> {
+            return localVarFp.apiHorariosConfirmarDosificacionDosificadorIdGet(dosificadorId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} dosificadorId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiHorariosDosificadorIdGet(dosificadorId: string, options?: any): AxiosPromise<Array<HorarioEntidadDto>> {
+            return localVarFp.apiHorariosDosificadorIdGet(dosificadorId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3614,6 +3594,28 @@ export const HorariosApiFactory = function (configuration?: Configuration, baseP
  * @extends {BaseAPI}
  */
 export class HorariosApi extends BaseAPI {
+    /**
+     * 
+     * @param {string} dosificadorId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HorariosApi
+     */
+    public apiHorariosConfirmarDosificacionDosificadorIdGet(dosificadorId: string, options?: AxiosRequestConfig) {
+        return HorariosApiFp(this.configuration).apiHorariosConfirmarDosificacionDosificadorIdGet(dosificadorId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} dosificadorId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HorariosApi
+     */
+    public apiHorariosDosificadorIdGet(dosificadorId: string, options?: AxiosRequestConfig) {
+        return HorariosApiFp(this.configuration).apiHorariosDosificadorIdGet(dosificadorId, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @param {*} [options] Override http request option.
@@ -3688,9 +3690,6 @@ export const RegistrosApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -3720,9 +3719,6 @@ export const RegistrosApiAxiosParamCreator = function (configuration?: Configura
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
