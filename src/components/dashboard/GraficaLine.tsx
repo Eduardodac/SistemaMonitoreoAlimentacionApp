@@ -1,5 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { IDatosTransformados } from '../../helpers/manejoDatosDash';
+import { IDatosDashboard } from '../../helpers/manejoDatosDash';
 import { useEffect } from 'react';
 
 
@@ -42,7 +42,7 @@ import { useEffect } from 'react';
 //   ];
 
 type GraficaLineProps = {
-    data: IDatosTransformados[]
+    data: IDatosDashboard[]
     claves: string[]
 }
 

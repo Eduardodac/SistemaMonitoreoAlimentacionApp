@@ -12,7 +12,7 @@ import { Button } from "primereact/button"
 import { crearActividadesFelinasApi, crearGatosApi } from "../../services/httpclient"
 import { useAuthStore } from "../../store/authStore"
 import { useEffect, useState } from "react"
-import { getDatosPieAlimento, getDatosPietiempo, IDatosSalida, IDatosTransformados, obtenerClavesDinamicas, transformarDatosDias, transformarDatosDiasTiempo, transformarDatosHoras, transformarDatosHorasTiempo } from "../../helpers/manejoDatosDash"
+import { getDatosLine, getDatosPieAlimento, getDatosPieTiempo, IDatosSalida, IDatosDashboard, obtenerClavesDinamicas } from "../../helpers/manejoDatosDash"
 
 type dashboardFormType = {
     guid: string,
@@ -40,8 +40,8 @@ export const Dashboard = () => {
     const ActividadFelinaApi = crearActividadesFelinasApi(jwt);
 
     const [gatosOpciones, setGatosOpciones] = useState<optionType[]>([]);
-    const [datosTransformadosDias, setDatosTransformadosDias] = useState<IDatosTransformados[]>([]);
-    const [datosTransformadosTiempo, setDatosTransformadosTiempo] = useState<IDatosTransformados[]>([]);
+    const [datosTransformadosDias, setDatosTransformadosDias] = useState<IDatosDashboard[]>([]);
+    const [datosTransformadosTiempo, setDatosTransformadosTiempo] = useState<IDatosDashboard[]>([]);
     const [clavesDinamicas, setClavesDinamicas] = useState<string[]>([]);
     const [datosPieAlimento, setDatosPieAlimento] = useState<IDatosSalida[]>([]);
     const [datosPieTiempo, setDatosPieTiempo] = useState<IDatosSalida[]>([]);
@@ -86,23 +86,13 @@ export const Dashboard = () => {
                 }
             })
             .then((resultado: any) => {
-                if (data.periodo === 1) {
-                    const datosTransformados = transformarDatosHoras(resultado.data);
-                    setDatosTransformadosDias(datosTransformados);
-                    const datosTransformadosTiempo = transformarDatosHorasTiempo(resultado.data);
-                    setDatosTransformadosTiempo(datosTransformadosTiempo);
-                    setClavesDinamicas(obtenerClavesDinamicas(datosTransformados))
-                    setDatosPieAlimento(getDatosPieAlimento(resultado.data))
-                    setDatosPieTiempo(getDatosPietiempo(resultado.data))
-                } else {
-                    const datosTransformados = transformarDatosDias(resultado.data);
-                    setDatosTransformadosDias(datosTransformados);
-                    const datosTransformadosTiempo = transformarDatosDiasTiempo(resultado.data);
-                    setDatosTransformadosTiempo(datosTransformadosTiempo);
-                    setClavesDinamicas(obtenerClavesDinamicas(datosTransformados))
-                    setDatosPieAlimento(getDatosPieAlimento(resultado.data))
-                    setDatosPieTiempo(getDatosPietiempo(resultado.data))
-                }
+                const esDia = data.periodo ==2? true:false;
+                const datosTransformados = getDatosLine(resultado.data, esDia);
+                setDatosTransformadosDias(datosTransformados[0]);
+                setDatosTransformadosTiempo(datosTransformados[1]);
+                setClavesDinamicas(obtenerClavesDinamicas(datosTransformados[0]))
+                setDatosPieAlimento(getDatosPieAlimento(resultado.data))
+                setDatosPieTiempo(getDatosPieTiempo(resultado.data))
             })
             .catch((error) => {
                 console.error("Error en actualizar la data:", error);
